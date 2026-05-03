@@ -1,4 +1,4 @@
-/* Figblox — design tokens & layout */
+/* Figblox - design tokens & layout */
 :root {
   --bg: #0a0a0c;
   --surface: #111115;
@@ -12,6 +12,8 @@
   --font: "Space Grotesk", system-ui, sans-serif;
   --green-dot: #22c55e;
   --check: #22c55e;
+  /* Sticky nav (~56–72px) + gap so hash links and headings don’t sit under the bar */
+  --scroll-pad: 5.75rem;
 }
 
 *,
@@ -21,7 +23,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-pad);
+  /* Smooth scroll fights sticky headers on mobile; instant scroll + scroll-padding is steadier */
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 900px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -32,6 +48,16 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 a {
@@ -148,6 +174,7 @@ button.btn:disabled {
   top: 0;
   z-index: 100;
   background: transparent;
+  border-bottom: 1px solid transparent;
   transition: background 0.2s, backdrop-filter 0.2s, border-color 0.2s;
 }
 
@@ -155,7 +182,7 @@ button.btn:disabled {
   background: rgba(10, 10, 12, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom-color: var(--border);
 }
 
 .nav {
@@ -249,6 +276,7 @@ button.btn:disabled {
   background: rgba(10, 10, 12, 0.97);
   padding: 2rem 1.5rem;
   z-index: 99;
+  overscroll-behavior: contain;
 }
 
 .site-header.menu-open .nav-overlay {
@@ -862,16 +890,25 @@ button.btn:disabled {
   opacity: 0.6;
 }
 
-/* IO fade — only when JS runs (see main.js) */
+/* IO fade - only when JS runs (see main.js). Light motion avoids layout “jumps”. */
 html.js .io-fade {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(8px);
+  transition: opacity 0.38s ease-out, transform 0.38s ease-out;
 }
 
 html.js .io-fade.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .io-fade,
+  html.js .io-fade.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* Docs / inner pages */
@@ -928,7 +965,7 @@ html.js .io-fade.is-visible {
 
 /* Docs layout (Autodisc-style: sticky sidebar + article card) */
 .docs-page .site-header {
-  border-bottom: 1px solid var(--border);
+  border-bottom-color: var(--border);
 }
 
 .docs-layout {
@@ -1086,7 +1123,11 @@ html.js .io-fade.is-visible {
 }
 
 .docs-section {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--scroll-pad);
+}
+
+#pricing {
+  scroll-margin-top: var(--scroll-pad);
 }
 
 .docs-section + .docs-section {

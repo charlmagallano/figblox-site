@@ -51,7 +51,7 @@
     });
   }
 
-  /** FAQ accordion — one open at a time */
+  /** FAQ accordion: one open at a time */
   var faqList = document.getElementById("faq-list");
   if (faqList) {
     faqList.querySelectorAll(".faq-item__q").forEach(function (btn) {
@@ -83,9 +83,17 @@
     });
   }
 
-  /** IntersectionObserver fade-in-up */
+  /** IntersectionObserver fade-in */
   var fadeEls = document.querySelectorAll(".io-fade");
-  if (fadeEls.length && "IntersectionObserver" in window) {
+  var prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion) {
+    fadeEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  } else if (fadeEls.length && "IntersectionObserver" in window) {
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -95,7 +103,7 @@
           }
         });
       },
-      { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+      { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.02 }
     );
     fadeEls.forEach(function (el) {
       io.observe(el);
@@ -106,11 +114,13 @@
     });
   }
 
-  /** Docs sidebar: highlight nav link for section in view */
+  /** Docs sidebar: stable scroll spy (single active section; avoids IO flicker) */
   var docsNav = document.getElementById("docs-nav");
-  if (docsNav && "IntersectionObserver" in window) {
-    var docSections = document.querySelectorAll(".docs-section[id]");
+  var docSections = document.querySelectorAll(".docs-section[id]");
+  if (docsNav && docSections.length) {
     var docLinks = docsNav.querySelectorAll("a.docs-nav__link");
+    var spyTicking = false;
+
     function setDocActive(id) {
       docLinks.forEach(function (a) {
         var href = a.getAttribute("href");
@@ -123,22 +133,66 @@
         }
       });
     }
-    var ioDocs = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting && entry.target.id) {
-            setDocActive(entry.target.id);
-          }
-        });
-      },
-      { root: null, rootMargin: "-10% 0px -50% 0px", threshold: [0, 0.1] }
-    );
-    docSections.forEach(function (sec) {
-      ioDocs.observe(sec);
-    });
-    var dh = window.location.hash.replace(/^#/, "");
-    if (dh && document.getElementById(dh)) {
-      setDocActive(dh);
+
+    function pickSectionForScroll() {
+      /* Last section whose top edge has crossed this line below the sticky nav */
+      var markerPx = 96;
+      var currentId = docSections[0].id;
+      var i;
+      for (i = 0; i < docSections.length; i++) {
+        var sec = docSections[i];
+        if (sec.getBoundingClientRect().top <= markerPx) {
+          currentId = sec.id;
+        }
+      }
+      setDocActive(currentId);
     }
+
+    function onSpyScroll() {
+      if (!spyTicking) {
+        spyTicking = true;
+        window.requestAnimationFrame(function () {
+          spyTicking = false;
+          pickSectionForScroll();
+        });
+      }
+    }
+
+    window.addEventListener("scroll", onSpyScroll, { passive: true });
+    window.addEventListener("resize", onSpyScroll, { passive: true });
+    window.addEventListener("hashchange", function () {
+      var id = window.location.hash.replace(/^#/, "");
+      if (id && document.getElementById(id)) {
+        setDocActive(id);
+      }
+    });
+
+    window.requestAnimationFrame(function () {
+      pickSectionForScroll();
+    });
+
+    window.addEventListener("load", function () {
+      window.requestAnimationFrame(function () {
+        pickSectionForScroll();
+        var hid = window.location.hash.replace(/^#/, "");
+        if (hid && document.getElementById(hid)) {
+          setDocActive(hid);
+        }
+      });
+    });
+
+    docsNav.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function () {
+        var href = a.getAttribute("href") || "";
+        var id = href.replace(/^#/, "");
+        if (id) {
+          window.requestAnimationFrame(function () {
+            window.requestAnimationFrame(function () {
+              setDocActive(id);
+            });
+          });
+        }
+      });
+    });
   }
 })();
