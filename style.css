@@ -688,6 +688,65 @@ button.btn:disabled {
   margin-right: auto;
 }
 
+/* Glass hover — feature & pricing cards only (not .hero-video.card) */
+.feature-card.card,
+.pricing-card.card {
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    backdrop-filter 0.22s ease,
+    -webkit-backdrop-filter 0.22s ease,
+    transform 0.22s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card.card,
+  .pricing-card.card {
+    transition: none;
+  }
+}
+
+@media (hover: hover) {
+  .feature-card.card:hover {
+    background: rgba(17, 17, 21, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+  }
+
+  .pricing-card.card:hover {
+    background: rgba(17, 17, 21, 0.52);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .pricing-card.card.pricing-card--highlight:hover {
+    background: rgba(22, 22, 26, 0.62);
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow:
+      0 20px 56px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .feature-card.card:hover,
+  .pricing-card.card:hover {
+    transform: none;
+  }
+}
+
 /* Platform */
 .platform__grid {
   display: grid;
@@ -786,7 +845,7 @@ button.btn:disabled {
 
 @media (min-width: 901px) {
   .pricing-section {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 4rem;
   }
 }
 
