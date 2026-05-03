@@ -663,6 +663,15 @@ button.btn:disabled {
   text-align: center;
 }
 
+.feature-card__check {
+  display: block;
+  color: var(--check);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 0.75rem;
+}
+
 .feature-card__title {
   font-size: 1.25rem;
   font-weight: 700;
