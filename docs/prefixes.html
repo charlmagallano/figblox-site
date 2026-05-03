@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prefixes - Figblox Docs</title>
+  <meta name="description" content="Layer naming and object-type prefixes for Figblox.">
+  <meta property="og:title" content="Prefixes - Figblox Docs">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="docs-page" data-doc-page="prefixes">
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="../index.html"><img class="nav__logo" src="../Figblox.svg" alt="Figblox" width="121" height="32" decoding="async" /></a>
+      <ul class="nav__links nav__links--center">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Docs</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="nav__login" href="#">Log in</a>
+        <a class="btn btn--primary btn--pill" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Get Figblox</a>
+      </div>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-drawer" hidden>
+      <ul class="nav-overlay__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Docs</a></li>
+        <li><a href="#">Log in</a></li>
+        <li><a class="btn btn--primary btn--pill nav-overlay__cta" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Get Figblox</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar__card">
+        <div class="docs-sidebar__head">
+          <p class="docs-sidebar__title">Docs</p>
+          <p class="docs-sidebar__desc muted">Figma export, Studio import, prefixes, and workflow.</p>
+        </div>
+        <nav class="docs-nav" id="docs-nav" aria-label="Documentation sections">
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Get started</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="index.html">Introduction</a></li>
+              <li><a class="docs-nav__link" href="pricing.html">Pricing</a></li>
+              <li><a class="docs-nav__link" href="overview.html">Overview</a></li>
+              <li><a class="docs-nav__link" href="getting-started.html">Getting Started</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Workflow</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="prefixes.html">Prefixes</a></li>
+              <li><a class="docs-nav__link" href="auto-layout.html">Auto Layout</a></li>
+              <li><a class="docs-nav__link" href="images.html">Images</a></li>
+              <li><a class="docs-nav__link" href="make-raster.html">Make Raster</a></li>
+              <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
+              <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
+              <li><a class="docs-nav__link" href="components.html">Components</a></li>
+              <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Help</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="history.html">History</a></li>
+              <li><a class="docs-nav__link" href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <section class="docs-main">
+      <div class="docs-article-card">
+        <header class="docs-article-head">
+          <p class="docs-eyebrow">Figblox Docs</p>
+          <h1 class="docs-h1">Prefixes</h1>
+          <p class="docs-lead muted">Tell Figblox what to create from layer names.</p>
+        </header>
+
+        <article class="docs-markdown">
+          <div class="docs-section" id="prefixes">
+            <p>Prefixes tell Figblox what to create. Put them at the start of the layer name.</p>
+                        <p>Use this format:<br><code class="docs-code">.prefix Layer Name</code></p>
+                        <p>The text after the last prefix becomes the layer name in Roblox.<br>Example: <code class="docs-code">.textbutton Shop</code> creates a TextButton named Shop.</p>
+
+                        <h3>No prefix needed</h3>
+                        <p>Some Figma layers already export to the right Roblox type on their own.</p>
+                        <ul>
+                          <li>Text exports as a TextLabel</li>
+                          <li>Frames, groups, components, instances, and plain rectangles export as a Frame</li>
+                          <li>Vectors, shapes, and image-filled frames or rectangles export as an ImageLabel</li>
+                          <li>Anything else exports as a Frame by default</li>
+                        </ul>
+                        <p>Corners, strokes, gradients, auto layout, padding, and similar Figma properties can also create Roblox UI objects automatically, like UICorner, UIStroke, UIGradient, UIListLayout, UIPadding, and UIAspectRatioConstraint.</p>
+
+                        <h3>Object prefixes</h3>
+                        <div class="docs-table-wrap">
+                          <table class="docs-table">
+                            <tbody>
+                              <tr><td><code>.frame</code></td><td>Creates a Frame</td></tr>
+                              <tr><td><code>.textlabel</code></td><td>Creates a TextLabel</td></tr>
+                              <tr><td><code>.textbutton</code></td><td>Creates a TextButton</td></tr>
+                              <tr><td><code>.textbox</code></td><td>Creates a TextBox</td></tr>
+                              <tr><td><code>.imagelabel</code></td><td>Creates an ImageLabel</td></tr>
+                              <tr><td><code>.imagebutton</code></td><td>Creates an ImageButton</td></tr>
+                              <tr><td><code>.imageframe</code></td><td>Creates an ImageLabel</td></tr>
+                              <tr><td><code>.scrollingframe</code> or <code>.scrollv</code></td><td>Creates a vertical ScrollingFrame</td></tr>
+                              <tr><td><code>.scrollingframex</code> or <code>.scrollh</code></td><td>Creates a horizontal ScrollingFrame</td></tr>
+                              <tr><td><code>.scrollviewport</code></td><td>Explicit scroll viewport tag</td></tr>
+                              <tr><td><code>.viewportframe</code></td><td>Creates a ViewportFrame</td></tr>
+                              <tr><td><code>.canvas</code> or <code>.canvasgroup</code></td><td>Creates a CanvasGroup</td></tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <h3>Other prefixes</h3>
+                        <div class="docs-table-wrap">
+                          <table class="docs-table">
+                            <tbody>
+                              <tr><td><code>.gray</code> or <code>.grayscale</code></td><td>Exports a grayscale PNG</td></tr>
+                              <tr><td><code>.hover</code></td><td>Marks the layer as Hover</td></tr>
+                              <tr><td><code>.clicked</code> or <code>.pressed</code></td><td>Marks the layer as Pressed</td></tr>
+                              <tr><td><code>.toggled</code></td><td>Marks the layer as Toggled</td></tr>
+                              <tr><td><code>.disabled</code></td><td>Marks the layer as Disabled</td></tr>
+                              <tr><td><code>.scrollclip</code> or <code>.scrollviewport</code></td><td>Marks a frame as the clipping child inside a scroll container</td></tr>
+                              <tr><td><code>.raster</code></td><td>Renders the layer to a PNG</td></tr>
+                              <tr><td><code>.parent</code></td><td>Makes the tagged child become the Roblox parent for its group</td></tr>
+                              <tr><td><code>.ignore</code></td><td>Skips the layer during export</td></tr>
+                              <tr><td><code>.lock</code></td><td>Applies lock behavior and can be combined with other prefixes</td></tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <h3>Combining prefixes</h3>
+                        <ul>
+                          <li>You can use more than one prefix on the same layer.</li>
+                          <li>Figblox reads them from left to right.</li>
+                          <li>If you use more than one object prefix, the last one is used.</li>
+                          <li>If you use more than one state prefix, the last one is used.</li>
+                          <li>For scrolling frames, <code class="docs-code">.scrollh</code> or <code class="docs-code">.scrollingframex</code> sets horizontal scrolling, and <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollingframe</code> sets vertical scrolling. If both appear, the later one is used.</li>
+                        </ul>
+
+                        <h3>Parent override</h3>
+                        <p>Use <code class="docs-code">.parent</code> on the direct child that should become the Roblox parent.</p>
+                        <p>For example:<br><code class="docs-code">.parent .imagebutton Background</code></p>
+                        <p>If that child is inside a group named Promote, Figblox makes it the parent and puts the other children inside it instead of creating an extra Frame.</p>
+
+                        <h3>Examples</h3>
+                        <pre class="docs-pre"><code>.textlabel Health Bar
+            .imagebutton Play Button
+            .scrollingframe Leaderboard
+            .gray .imagelabel Title
+            .pressed .imagelabel OK
+            .gray .scrollh .raster Card</code></pre>
+          </div>
+          <p class="docs-back"><a href="../index.html">← Back to home</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand-block">
+        <a class="footer__brand" href="../index.html">Figblox</a>
+        <p class="footer__tag muted">Design in Figma. Build in Roblox.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3 class="footer__heading">Platform</h3>
+          <ul>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma plugin</a></li>
+            <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox plugin</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Resources</h3>
+          <ul>
+            <li><a href="index.html">Docs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Community</h3>
+          <ul>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Legal</h3>
+          <ul>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 Figblox. All rights reserved.</span>
+      <span class="footer__bar-links">
+        <a href="../privacy.html">Privacy</a>
+        <span class="footer__sep">·</span>
+        <a href="#">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="../main.js" defer></script>
+  <script src="docs-nav-active.js" defer></script>
+</body>
+</html>

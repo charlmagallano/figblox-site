@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started - Figblox Docs</title>
+  <meta name="description" content="Install the Figma and Roblox Studio plugins and run your first import.">
+  <meta property="og:title" content="Getting Started - Figblox Docs">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="docs-page" data-doc-page="getting-started">
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="../index.html"><img class="nav__logo" src="../Figblox.svg" alt="Figblox" width="121" height="32" decoding="async" /></a>
+      <ul class="nav__links nav__links--center">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Docs</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="nav__login" href="#">Log in</a>
+        <a class="btn btn--primary btn--pill" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Get Figblox</a>
+      </div>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-drawer" hidden>
+      <ul class="nav-overlay__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#pricing">Pricing</a></li>
+        <li><a href="index.html">Docs</a></li>
+        <li><a href="#">Log in</a></li>
+        <li><a class="btn btn--primary btn--pill nav-overlay__cta" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Get Figblox</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar__card">
+        <div class="docs-sidebar__head">
+          <p class="docs-sidebar__title">Docs</p>
+          <p class="docs-sidebar__desc muted">Figma export, Studio import, prefixes, and workflow.</p>
+        </div>
+        <nav class="docs-nav" id="docs-nav" aria-label="Documentation sections">
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Get started</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="index.html">Introduction</a></li>
+              <li><a class="docs-nav__link" href="pricing.html">Pricing</a></li>
+              <li><a class="docs-nav__link" href="overview.html">Overview</a></li>
+              <li><a class="docs-nav__link" href="getting-started.html">Getting Started</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Workflow</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="prefixes.html">Prefixes</a></li>
+              <li><a class="docs-nav__link" href="auto-layout.html">Auto Layout</a></li>
+              <li><a class="docs-nav__link" href="images.html">Images</a></li>
+              <li><a class="docs-nav__link" href="make-raster.html">Make Raster</a></li>
+              <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
+              <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
+              <li><a class="docs-nav__link" href="components.html">Components</a></li>
+              <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Help</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="history.html">History</a></li>
+              <li><a class="docs-nav__link" href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <section class="docs-main">
+      <div class="docs-article-card">
+        <header class="docs-article-head">
+          <p class="docs-eyebrow">Figblox Docs</p>
+          <h1 class="docs-h1">Getting Started</h1>
+          <p class="docs-lead muted">Install both plugins and follow the basic flow</p>
+        </header>
+
+        <article class="docs-markdown">
+          <div class="docs-section">
+            <h2>Install both plugins</h2>
+            <p>Install the Figblox plugin from the Figma Community.<br>Install the Figblox plugin from the Roblox Creator Store in Studio.</p>
+            <p class="docs-btn-row">
+              <a class="btn btn--secondary btn--pill" href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma Plugin</a>
+              <a class="btn btn--secondary btn--pill" href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Studio Plugin</a>
+            </p>
+            <p>For best results, use one clean root frame in Figma that matches a Roblox device emulator size, such as 1920 × 1080.</p>
+
+            <h2>Basic flow</h2>
+            <ol class="docs-ol">
+              <li>Design your UI in Figma.</li>
+              <li>Export it with Figblox.</li>
+              <li>Paste the JSON into the Roblox plugin.</li>
+              <li>Click Import to open Preview.</li>
+              <li>Review the changes, then click Confirm.</li>
+            </ol>
+          </div>
+          <p class="docs-back"><a href="../index.html">← Back to home</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand-block">
+        <a class="footer__brand" href="../index.html">Figblox</a>
+        <p class="footer__tag muted">Design in Figma. Build in Roblox.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3 class="footer__heading">Platform</h3>
+          <ul>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma plugin</a></li>
+            <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox plugin</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Resources</h3>
+          <ul>
+            <li><a href="index.html">Docs</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Community</h3>
+          <ul>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Legal</h3>
+          <ul>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 Figblox. All rights reserved.</span>
+      <span class="footer__bar-links">
+        <a href="../privacy.html">Privacy</a>
+        <span class="footer__sep">·</span>
+        <a href="#">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="../main.js" defer></script>
+  <script src="docs-nav-active.js" defer></script>
+</body>
+</html>

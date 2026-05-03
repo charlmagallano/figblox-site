@@ -114,85 +114,92 @@
     });
   }
 
-  /** Docs sidebar: stable scroll spy (single active section; avoids IO flicker) */
-  var docsNav = document.getElementById("docs-nav");
-  var docSections = document.querySelectorAll(".docs-section[id]");
-  if (docsNav && docSections.length) {
-    var docLinks = docsNav.querySelectorAll("a.docs-nav__link");
-    var spyTicking = false;
+  /** Same-page hash links: scroll target to vertical center (stable layout, respects reduced motion) */
+  var prefersReducedMotionScroll =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function setDocActive(id) {
-      docLinks.forEach(function (a) {
-        var href = a.getAttribute("href");
-        if (href === "#" + id) {
-          a.classList.add("is-active");
-          a.setAttribute("aria-current", "location");
-        } else {
-          a.classList.remove("is-active");
-          a.removeAttribute("aria-current");
-        }
-      });
+  function normalizePathname(pathname) {
+    return pathname.replace(/\/?index\.html$/i, "/").replace(/\/+/g, "/") || "/";
+  }
+
+  function isSamePageUrl(url) {
+    if (url.origin !== window.location.origin) return false;
+    if (url.search !== window.location.search) return false;
+    return normalizePathname(url.pathname) === normalizePathname(window.location.pathname);
+  }
+
+  function scrollTargetToCenter(el, smooth) {
+    if (!el || typeof el.scrollIntoView !== "function") return;
+    var behavior = "auto";
+    if (smooth && !prefersReducedMotionScroll) {
+      behavior = "smooth";
+    }
+    el.scrollIntoView({ block: "center", inline: "nearest", behavior: behavior });
+  }
+
+  function scrollToIdFromHash(smooth) {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var id = decodeURIComponent(hash.slice(1));
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    scrollTargetToCenter(el, smooth);
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var raw = a.getAttribute("href");
+    if (!raw || raw === "#") return;
+
+    var resolved;
+    try {
+      resolved = new URL(raw, window.location.href);
+    } catch (err) {
+      return;
     }
 
-    function pickSectionForScroll() {
-      /* Last section whose top edge has crossed this line below the sticky nav */
-      var markerPx = 96;
-      var currentId = docSections[0].id;
-      var i;
-      for (i = 0; i < docSections.length; i++) {
-        var sec = docSections[i];
-        if (sec.getBoundingClientRect().top <= markerPx) {
-          currentId = sec.id;
-        }
-      }
-      setDocActive(currentId);
+    if (!isSamePageUrl(resolved)) return;
+    if (!resolved.hash || resolved.hash.length < 2) return;
+
+    var id = decodeURIComponent(resolved.hash.slice(1));
+    var el = document.getElementById(id);
+    if (!el) return;
+
+    e.preventDefault();
+    var next = resolved.pathname + resolved.search + resolved.hash;
+    if (window.history && window.history.pushState) {
+      window.history.pushState(null, "", next);
+    } else {
+      window.location.hash = resolved.hash;
     }
+    scrollTargetToCenter(el, true);
+  });
 
-    function onSpyScroll() {
-      if (!spyTicking) {
-        spyTicking = true;
-        window.requestAnimationFrame(function () {
-          spyTicking = false;
-          pickSectionForScroll();
-        });
-      }
-    }
-
-    window.addEventListener("scroll", onSpyScroll, { passive: true });
-    window.addEventListener("resize", onSpyScroll, { passive: true });
-    window.addEventListener("hashchange", function () {
-      var id = window.location.hash.replace(/^#/, "");
-      if (id && document.getElementById(id)) {
-        setDocActive(id);
-      }
-    });
-
+  function runHashAlignAfterPaint(smooth) {
     window.requestAnimationFrame(function () {
-      pickSectionForScroll();
-    });
-
-    window.addEventListener("load", function () {
       window.requestAnimationFrame(function () {
-        pickSectionForScroll();
-        var hid = window.location.hash.replace(/^#/, "");
-        if (hid && document.getElementById(hid)) {
-          setDocActive(hid);
-        }
-      });
-    });
-
-    docsNav.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener("click", function () {
-        var href = a.getAttribute("href") || "";
-        var id = href.replace(/^#/, "");
-        if (id) {
-          window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(function () {
-              setDocActive(id);
-            });
-          });
-        }
+        scrollToIdFromHash(smooth);
       });
     });
   }
+
+  if (window.location.hash && window.location.hash.length > 1) {
+    runHashAlignAfterPaint(false);
+  }
+
+  window.addEventListener("hashchange", function () {
+    scrollToIdFromHash(!prefersReducedMotionScroll);
+  });
+
+  window.addEventListener("load", function () {
+    if (window.location.hash && window.location.hash.length > 1) {
+      scrollToIdFromHash(false);
+    }
+  });
+
 })();
