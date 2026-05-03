@@ -164,23 +164,23 @@ img {
 }
 
 .btn--primary {
-  /* Slightly below pure white so hover can read as a lift (was ~same as #fff hover). */
-  background: #e4e4e7;
+  /* Darker than hover white so the fill change reads on all displays (not just a hairline ring). */
+  background: #c6c6cc;
   color: var(--on-accent);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .btn--primary:hover:not(:disabled) {
   background: #ffffff;
   color: var(--on-accent);
-  border-color: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.55);
+  /* Depth + lift only — no 0 0 0 1px ring (that was reading as “outline only” vs fill). */
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.35),
-    0 8px 28px rgba(0, 0, 0, 0.5),
-    0 2px 6px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-  transform: translateY(-2px);
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 4px 12px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .btn--primary:active:not(:disabled) {
