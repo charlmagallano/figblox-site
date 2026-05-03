@@ -489,9 +489,10 @@ button.btn:disabled {
 
 .hero__sub {
   font-size: 1.125rem;
-  max-width: 560px;
+  max-width: 36rem;
   margin: 0 auto 2rem;
   line-height: 1.65;
+  text-wrap: balance;
 }
 
 .hero__ctas {
@@ -757,7 +758,8 @@ button.btn:disabled {
   padding: 0;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.03);
+  background: transparent;
+  border: none;
   align-self: stretch;
 }
 
@@ -771,6 +773,12 @@ button.btn:disabled {
 /* Pricing */
 .pricing-section {
   scroll-margin-top: 6rem;
+}
+
+@media (min-width: 901px) {
+  .pricing-section {
+    scroll-margin-top: 5rem;
+  }
 }
 
 .pricing-section .section__title {
