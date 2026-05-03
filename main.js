@@ -88,7 +88,7 @@
     });
   }
 
-  /** IntersectionObserver fade-in */
+  /** IntersectionObserver: fade in when entering view, fade out (reverse) when leaving */
   var fadeEls = document.querySelectorAll(".io-fade");
   var prefersReducedMotion =
     typeof window.matchMedia === "function" &&
@@ -104,7 +104,8 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
+          } else {
+            entry.target.classList.remove("is-visible");
           }
         });
       },
