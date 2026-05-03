@@ -1192,7 +1192,7 @@ button.btn:disabled {
 }
 
 /* IO fade - only when JS runs (see main.js). Light motion avoids layout “jumps”. */
-html.js .io-fade {
+html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split) {
   opacity: 0;
   transform: translateY(12px);
   transition:
@@ -1200,14 +1200,175 @@ html.js .io-fade {
     transform var(--t-slow) var(--ease-out-soft);
 }
 
-html.js .io-fade.is-visible {
+html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split).is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Stagger sections: wrapper stays in flow; children animate when section gets .is-visible */
+html.js .io-fade.io-fade--stagger {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .features.io-fade--stagger:not(.is-visible) article.feature-card {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+html.js .features.io-fade--stagger article.feature-card {
+  transition:
+    opacity calc(var(--t-slow) + 0.06s) var(--ease-out-soft),
+    transform calc(var(--t-slow) + 0.12s) var(--ease-out-soft);
+}
+
+html.js .features.io-fade--stagger.is-visible article.feature-card:nth-child(2) {
+  transition-delay: 0.04s;
+}
+
+html.js .features.io-fade--stagger.is-visible article.feature-card:nth-child(3) {
+  transition-delay: 0.11s;
+}
+
+html.js .features.io-fade--stagger.is-visible article.feature-card:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+html.js .features.io-fade--stagger.is-visible article.feature-card:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+html.js .features.io-fade--stagger.is-visible article.feature-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .pricing-section.io-fade--stagger:not(.is-visible) .section__title,
+html.js .pricing-section.io-fade--stagger:not(.is-visible) .section__sub {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+html.js .pricing-section.io-fade--stagger:not(.is-visible) .pricing-card {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+html.js .pricing-section.io-fade--stagger:not(.is-visible) .pricing-footnote {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+html.js .pricing-section.io-fade--stagger .section__title,
+html.js .pricing-section.io-fade--stagger .section__sub {
+  transition:
+    opacity calc(var(--t-slow) + 0.05s) var(--ease-out-soft),
+    transform calc(var(--t-slow) + 0.05s) var(--ease-out-soft);
+}
+
+html.js .pricing-section.io-fade--stagger .pricing-card {
+  transition:
+    opacity calc(var(--t-slow) + 0.08s) var(--ease-out-soft),
+    transform calc(var(--t-slow) + 0.14s) var(--ease-out-soft);
+}
+
+html.js .pricing-section.io-fade--stagger .pricing-footnote {
+  transition:
+    opacity var(--t-slow) var(--ease-out-soft),
+    transform var(--t-slow) var(--ease-out-soft);
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .section__title,
+html.js .pricing-section.io-fade--stagger.is-visible .section__sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .pricing-footnote {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.32s;
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .pricing-card:nth-child(1) {
+  transition-delay: 0.06s;
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .pricing-card:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .pricing-card:nth-child(3) {
+  transition-delay: 0.22s;
+}
+
+html.js .pricing-section.io-fade--stagger.is-visible .pricing-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Platform: copy from one side, banner from the other */
+html.js .io-fade.io-fade--split {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .platform.io-fade--split:not(.is-visible) .platform__text {
+  opacity: 0;
+  transform: translateX(-28px);
+}
+
+html.js .platform.io-fade--split:not(.is-visible) .platform__visual {
+  opacity: 0;
+  transform: translateX(28px);
+}
+
+html.js .platform.io-fade--split .platform__text,
+html.js .platform.io-fade--split .platform__visual {
+  transition:
+    opacity calc(var(--t-slow) + 0.1s) var(--ease-out-soft),
+    transform calc(var(--t-slow) + 0.18s) var(--ease-out-soft);
+}
+
+html.js .platform.io-fade--split.is-visible .platform__visual {
+  transition-delay: 0.06s;
+}
+
+html.js .platform.io-fade--split.is-visible .platform__text,
+html.js .platform.io-fade--split.is-visible .platform__visual {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 860px) {
+  html.js .platform.io-fade--split:not(.is-visible) .platform__text,
+  html.js .platform.io-fade--split:not(.is-visible) .platform__visual {
+    transform: translateY(22px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html.js .io-fade,
-  html.js .io-fade.is-visible {
+  html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split),
+  html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split).is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html.js .features.io-fade--stagger:not(.is-visible) article.feature-card,
+  html.js .features.io-fade--stagger.is-visible article.feature-card,
+  html.js .pricing-section.io-fade--stagger:not(.is-visible) .section__title,
+  html.js .pricing-section.io-fade--stagger:not(.is-visible) .section__sub,
+  html.js .pricing-section.io-fade--stagger:not(.is-visible) .pricing-card,
+  html.js .pricing-section.io-fade--stagger:not(.is-visible) .pricing-footnote,
+  html.js .pricing-section.io-fade--stagger.is-visible .section__title,
+  html.js .pricing-section.io-fade--stagger.is-visible .section__sub,
+  html.js .pricing-section.io-fade--stagger.is-visible .pricing-card,
+  html.js .pricing-section.io-fade--stagger.is-visible .pricing-footnote,
+  html.js .platform.io-fade--split:not(.is-visible) .platform__text,
+  html.js .platform.io-fade--split:not(.is-visible) .platform__visual,
+  html.js .platform.io-fade--split.is-visible .platform__text,
+  html.js .platform.io-fade--split.is-visible .platform__visual {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
