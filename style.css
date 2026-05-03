@@ -279,12 +279,12 @@ button.btn:disabled {
   opacity: 0.92;
 }
 
-/* Icon slightly below 1em so cap-height aligns with wordmark (SVG is tall in viewBox) */
+/* Sized to wordmark em; tune height for optical balance with bold caps */
 .nav__brand img,
 .nav__logo {
   display: block;
   flex-shrink: 0;
-  height: 0.82em;
+  height: 0.92em;
   width: auto;
 }
 
@@ -559,7 +559,7 @@ button.btn:disabled {
   border-radius: var(--radius-card);
 }
 
-/* Hero video (1920×1080 / 16:9 showcase) */
+/* Hero video — frame matches source pixels (Showcase is 1662×1080, not 16:9) */
 .hero-video-wrap {
   width: 100%;
   max-width: min(1120px, 100%);
@@ -573,7 +573,7 @@ button.btn:disabled {
   overflow: hidden;
   padding: 0;
   background: #0c0c0e;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1662 / 1080;
 }
 
 .hero-video__media {
