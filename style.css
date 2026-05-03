@@ -71,7 +71,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover:not(.btn) {
   color: var(--text);
   opacity: 0.9;
 }
@@ -144,9 +144,20 @@ img {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-.btn--primary:hover {
+.btn--primary:hover:not(:disabled) {
+  background: #ffffff;
+  color: var(--on-accent);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn--primary:active:not(:disabled) {
   background: var(--accent-hover);
-  opacity: 1;
+  color: var(--on-accent);
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .btn--secondary {
@@ -156,9 +167,17 @@ img {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
-.btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.2);
+.btn--secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.11);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.btn--secondary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .btn--hero-dark {
@@ -168,9 +187,32 @@ img {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
 }
 
-.btn--hero-dark:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.22);
+.btn--hero-dark:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.11);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn--hero-dark:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--primary:hover:not(:disabled),
+  .btn--secondary:hover:not(:disabled),
+  .btn--hero-dark:hover:not(:disabled) {
+    transform: none;
+  }
+
+  .btn--primary:active:not(:disabled),
+  .btn--secondary:active:not(:disabled),
+  .btn--hero-dark:active:not(:disabled),
+  .btn:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .btn--pill {
@@ -225,15 +267,30 @@ button.btn:disabled {
 .nav__brand {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   justify-self: start;
-  line-height: 0;
+  line-height: 1;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav__brand:hover .nav__wordmark {
+  opacity: 0.92;
 }
 
 .nav__brand img,
 .nav__logo {
   display: block;
+  flex-shrink: 0;
   height: clamp(1.35rem, 2.8vw, 1.625rem);
   width: auto;
+}
+
+.nav__wordmark {
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .nav__links {
@@ -259,15 +316,6 @@ button.btn:disabled {
   align-items: center;
   gap: 1rem;
   justify-self: end;
-}
-
-.nav__login {
-  font-size: 0.9375rem;
-  color: var(--muted);
-}
-
-.nav__login:hover {
-  color: var(--text);
 }
 
 .nav__toggle {
@@ -646,7 +694,7 @@ button.btn:disabled {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--link-hover);
+  color: var(--check);
   font-weight: 600;
 }
 
