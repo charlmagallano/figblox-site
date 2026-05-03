@@ -1,6 +1,11 @@
 (function () {
   "use strict";
 
+  /** Avoid restored scroll position (often lands on #pricing after a prior visit; mobile Safari is aggressive). */
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
   var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".nav__toggle");
   var overlay = document.querySelector(".nav-overlay");
@@ -114,10 +119,30 @@
     });
   }
 
-  /** Same-page hash links: scroll target to vertical center (stable layout, respects reduced motion) */
+  /** Same-page hash links: scroll target (center by default; pricing uses start on desktop) */
   var prefersReducedMotionScroll =
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function isMobileNavBreakpoint() {
+    return (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(max-width: 900px)").matches
+    );
+  }
+
+  /** Pin element top edge just under sticky header (scrollIntoView is inconsistent on iOS with scroll-margin). */
+  function scrollBlockStartBelowHeader(el, smooth) {
+    if (!el || typeof el.getBoundingClientRect !== "function") return;
+    var header = document.querySelector(".site-header");
+    var pad = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+    var gap = 6;
+    var y = el.getBoundingClientRect().top + window.scrollY - pad - gap;
+    window.scrollTo({
+      top: Math.max(0, y),
+      behavior: smooth && !prefersReducedMotionScroll ? "smooth" : "auto",
+    });
+  }
 
   function normalizePathname(pathname) {
     return pathname.replace(/\/?index\.html$/i, "/").replace(/\/+/g, "/") || "/";
@@ -129,13 +154,19 @@
     return normalizePathname(url.pathname) === normalizePathname(window.location.pathname);
   }
 
-  function scrollTargetToCenter(el, smooth) {
-    if (!el || typeof el.scrollIntoView !== "function") return;
+  function scrollTargetForHash(el, smooth) {
+    if (!el) return;
+    if (isMobileNavBreakpoint()) {
+      scrollBlockStartBelowHeader(el, smooth);
+      return;
+    }
+    if (typeof el.scrollIntoView !== "function") return;
     var behavior = "auto";
     if (smooth && !prefersReducedMotionScroll) {
       behavior = "smooth";
     }
-    el.scrollIntoView({ block: "center", inline: "nearest", behavior: behavior });
+    var block = el.id === "pricing" ? "start" : "center";
+    el.scrollIntoView({ block: block, inline: "nearest", behavior: behavior });
   }
 
   function scrollToIdFromHash(smooth) {
@@ -145,7 +176,7 @@
     if (!id) return;
     var el = document.getElementById(id);
     if (!el) return;
-    scrollTargetToCenter(el, smooth);
+    scrollTargetForHash(el, smooth);
   }
 
   document.addEventListener("click", function (e) {
@@ -177,7 +208,7 @@
     } else {
       window.location.hash = resolved.hash;
     }
-    scrollTargetToCenter(el, true);
+    scrollTargetForHash(el, true);
   });
 
   function runHashAlignAfterPaint(smooth) {
@@ -188,8 +219,19 @@
     });
   }
 
-  if (window.location.hash && window.location.hash.length > 1) {
+  function hasMeaningfulHash() {
+    return window.location.hash && window.location.hash.length > 1;
+  }
+
+  function scrollTopUnlessDeepLink() {
+    if (hasMeaningfulHash()) return;
+    window.scrollTo(0, 0);
+  }
+
+  if (hasMeaningfulHash()) {
     runHashAlignAfterPaint(false);
+  } else {
+    scrollTopUnlessDeepLink();
   }
 
   window.addEventListener("hashchange", function () {
@@ -197,9 +239,16 @@
   });
 
   window.addEventListener("load", function () {
-    if (window.location.hash && window.location.hash.length > 1) {
+    if (hasMeaningfulHash()) {
       scrollToIdFromHash(false);
+    } else {
+      scrollTopUnlessDeepLink();
     }
+  });
+
+  window.addEventListener("pageshow", function (ev) {
+    if (!ev.persisted) return;
+    scrollTopUnlessDeepLink();
   });
 
   /** Hero video: muted autoplay + loop, no UI; resume if paused while page is visible */
