@@ -149,10 +149,8 @@
                         <h3>Combining prefixes</h3>
                         <ul>
                           <li>You can use more than one prefix on the same layer.</li>
-                          <li>Figblox reads them from left to right.</li>
-                          <li>If you use more than one object prefix, the last one is used.</li>
-                          <li>If you use more than one state prefix, the last one is used.</li>
-                          <li>For scrolling frames, <code class="docs-code">.scrollh</code> or <code class="docs-code">.scrollingframex</code> sets horizontal scrolling, and <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollingframe</code> sets vertical scrolling. If both appear, the later one is used.</li>
+                          <li>Prefix order in the layer name does not change how Figblox applies them—combining prefixes works the same no matter how they are arranged.</li>
+                          <li>For scrolling frames, <code class="docs-code">.scrollh</code> or <code class="docs-code">.scrollingframex</code> sets horizontal scrolling, and <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollingframe</code> sets vertical scrolling. These mix with your other prefixes in any order; when both horizontal and vertical scrolling markers are present, the result does not depend on which appears first.</li>
                         </ul>
 
                         <h3>Parent override</h3>

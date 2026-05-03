@@ -1660,41 +1660,17 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   font-size: 1rem;
 }
 
-.docs-pricing-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  margin: 1rem 0 1.25rem;
+/* Docs pricing page: same grid/cards as homepage */
+body[data-doc-page="pricing"] .docs-markdown {
+  max-width: min(70rem, 100%);
 }
 
-@media (min-width: 640px) {
-  .docs-pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.docs-pricing-embed {
+  margin: 0.5rem 0 1rem;
 }
 
-.docs-price-card {
-  padding: 1.25rem 1.25rem;
-  border-radius: var(--radius-card);
-  border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.docs-price-label {
-  margin: 0 0 0.35rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.docs-price-amount {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
+.docs-pricing-embed .pricing-footnote {
+  margin: 1.5rem auto 0;
 }
 
 .docs-cta-row,
