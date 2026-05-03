@@ -267,30 +267,32 @@ button.btn:disabled {
 .nav__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   justify-self: start;
   line-height: 1;
   color: var(--text);
   text-decoration: none;
+  font-size: 1.125rem;
 }
 
 .nav__brand:hover .nav__wordmark {
   opacity: 0.92;
 }
 
+/* Icon slightly below 1em so cap-height aligns with wordmark (SVG is tall in viewBox) */
 .nav__brand img,
 .nav__logo {
   display: block;
   flex-shrink: 0;
-  height: clamp(1.35rem, 2.8vw, 1.625rem);
+  height: 0.82em;
   width: auto;
 }
 
 .nav__wordmark {
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1em;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .nav__links {
@@ -582,6 +584,8 @@ button.btn:disabled {
   display: block;
   object-fit: contain;
   background: #000;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Feature cards */

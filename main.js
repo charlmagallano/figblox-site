@@ -202,4 +202,52 @@
     }
   });
 
+  /** Hero video: muted autoplay + loop, no UI; resume if paused while page is visible */
+  var heroVideo = document.querySelector(".hero-video__media");
+  if (heroVideo) {
+    var heroReduceMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (heroReduceMotion) {
+      var heroWrap = heroVideo.closest(".hero-video-wrap");
+      if (heroWrap) {
+        heroWrap.hidden = true;
+      }
+      heroVideo.removeAttribute("autoplay");
+      try {
+        heroVideo.pause();
+      } catch (err) {}
+    } else {
+      heroVideo.muted = true;
+
+      function heroTryPlay() {
+        var playPromise = heroVideo.play();
+        if (playPromise !== undefined && playPromise.catch) {
+          playPromise.catch(function () {});
+        }
+      }
+
+      heroTryPlay();
+      heroVideo.addEventListener(
+        "loadeddata",
+        function () {
+          heroTryPlay();
+        },
+        { once: true }
+      );
+
+      heroVideo.addEventListener("pause", function () {
+        if (document.visibilityState !== "visible") return;
+        window.requestAnimationFrame(heroTryPlay);
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible") {
+          heroTryPlay();
+        }
+      });
+    }
+  }
+
 })();
