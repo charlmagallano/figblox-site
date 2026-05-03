@@ -1,544 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Figblox — Design in Figma. Build in Roblox.</title>
-    <meta
-      name="description"
-      content="Figblox documentation: install plugins, prefixes, auto layout, images, import preview, tools, and components."
-    />
-    <meta property="og:title" content="Figblox — Documentation" />
-    <meta
-      property="og:description"
-      content="Full Figblox docs: Getting Started through Import, Tools, Components, and Workflow."
-    />
-    <meta property="og:image" content="https://example.com/og-figblox.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container site-header__inner">
-        <a class="logo" href="index.html">
-          <span class="logo__mark" aria-hidden="true"></span>
-          Figblox
-        </a>
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__link" href="index.html#features">Features</a>
-          <a class="nav__link" href="index.html#how-it-works">How It Works</a>
-          <a class="nav__link" href="index.html#pricing">Pricing</a>
-          <a class="nav__link" href="index.html#changelog">Changelog</a>
-          <a class="nav__link is-active" href="docs.html">Docs</a>
-          <a class="nav__link" href="index.html#faq">FAQ</a>
-        </nav>
-        <div class="nav__actions">
-          <a class="nav__link nav__link--ghost" href="#">Log in</a>
-          <a class="btn btn--primary" href="index.html#get">Get Figblox</a>
-        </div>
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="menu-toggle__bars">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation — Figblox</title>
+  <meta name="description" content="Figblox documentation: export from Figma, import in Roblox Studio, prefixes, and workflow.">
+  <meta property="og:title" content="Documentation — Figblox">
+  <meta property="og:description" content="Learn how to export UI from Figma and build it in Roblox Studio with Figblox.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="index.html">Figblox</a>
+      <ul class="nav__links nav__links--center">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="docs.html" aria-current="page">Docs</a></li>
+        <li><a href="index.html#changelog">Changelog</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="nav__login" href="index.html#get">Log in</a>
+        <a class="btn btn--primary btn--pill" href="index.html#get">Get Figblox</a>
       </div>
-    </header>
-
-    <div class="mobile-overlay" id="mobile-menu" aria-hidden="true">
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how-it-works">How It Works</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#changelog">Changelog</a>
-      <a href="docs.html">Docs</a>
-      <a href="index.html#faq">FAQ</a>
-      <a class="nav__link nav__link--ghost" href="#">Log in</a>
-      <a class="btn btn--primary" href="index.html#get">Get Figblox</a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-drawer" hidden>
+      <ul class="nav-overlay__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="index.html#changelog">Changelog</a></li>
+        <li><a href="index.html#get">Log in</a></li>
+        <li><a class="btn btn--primary btn--pill nav-overlay__cta" href="index.html#get">Get Figblox</a></li>
+      </ul>
     </div>
+  </header>
 
-    <main class="container docs-layout section section--tight">
-      <aside class="docs-sidebar" aria-label="Documentation sections">
-        <nav class="docs-sidebar__inner">
-          <details open class="docs-nav-group">
-            <summary>Getting Started</summary>
-            <ul>
-              <li><a href="#getting-overview">Overview</a></li>
-              <li><a href="#getting-install">Install Both Plugins</a></li>
-              <li><a href="#getting-flow">Basic Flow</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Prefixes</summary>
-            <ul>
-              <li><a href="#prefixes-object">Object Prefixes</a></li>
-              <li><a href="#prefixes-modifier">Modifier Prefixes</a></li>
-              <li><a href="#prefixes-combining">Combining Prefixes</a></li>
-              <li><a href="#prefixes-parent">Parent Override</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Auto Layout</summary>
-            <ul>
-              <li><a href="#layout-scroll">Scroll Containers</a></li>
-              <li><a href="#layout-roblox">Auto Layout → Roblox</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Images</summary>
-            <ul>
-              <li><a href="#images-export">How Export Works</a></li>
-              <li><a href="#images-import">Importing Images</a></li>
-              <li><a href="#images-reimport">Re-importing Images</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Make Raster</summary>
-            <ul>
-              <li><a href="#raster-make">Make Raster</a></li>
-              <li><a href="#raster-clear">Clear Raster</a></li>
-              <li><a href="#raster-when">When to Use Raster</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Import Process</summary>
-            <ul>
-              <li><a href="#import-preview">Preview</a></li>
-              <li><a href="#import-confirm">Confirm</a></li>
-              <li><a href="#import-reimport">Re-importing</a></li>
-              <li><a href="#import-remove-deleted">Remove Deleted Layers</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Tools</summary>
-            <ul>
-              <li><a href="#tools-scale">To Scale</a></li>
-              <li><a href="#tools-lock-text">Lock Text</a></li>
-              <li><a href="#tools-lock-stroke">Lock Stroke</a></li>
-              <li><a href="#tools-link-images">Link Images</a></li>
-              <li><a href="#tools-reset">Reset Tools</a></li>
-              <li><a href="#tools-inspector">Inspector</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Components</summary>
-            <ul>
-              <li><a href="#components-button">Make Button</a></li>
-              <li><a href="#components-textbox">Make TextBox</a></li>
-              <li><a href="#components-scrollview">Make ScrollView</a></li>
-              <li><a href="#components-toggle">Make Toggle</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>Workflow</summary>
-            <ul>
-              <li><a href="#workflow-guide">Full Workflow Guide</a></li>
-            </ul>
-          </details>
-          <details open class="docs-nav-group">
-            <summary>History</summary>
-            <ul>
-              <li><a href="#history">History</a></li>
-            </ul>
-          </details>
-        </nav>
-      </aside>
+  <main>
+    <section class="page-hero section io-fade">
+      <h1>Documentation</h1>
+      <p class="muted">Export from Figma. Import in Roblox Studio.</p>
+    </section>
 
-      <div class="docs-mobile-toc">
-        <label class="sr-only" for="docs-toc-select">Jump to section</label>
-        <select id="docs-toc-select" aria-label="Jump to section">
-          <option value="">Jump to section…</option>
-          <option value="#getting-overview">Overview</option>
-          <option value="#getting-install">Install Both Plugins</option>
-          <option value="#getting-flow">Basic Flow</option>
-          <option value="#prefixes-object">Object Prefixes</option>
-          <option value="#prefixes-modifier">Modifier Prefixes</option>
-          <option value="#prefixes-combining">Combining Prefixes</option>
-          <option value="#prefixes-parent">Parent Override</option>
-          <option value="#layout-scroll">Scroll Containers</option>
-          <option value="#layout-roblox">Auto Layout → Roblox</option>
-          <option value="#images-export">How Export Works</option>
-          <option value="#images-import">Importing Images</option>
-          <option value="#images-reimport">Re-importing Images</option>
-          <option value="#raster-make">Make Raster</option>
-          <option value="#raster-clear">Clear Raster</option>
-          <option value="#raster-when">When to Use Raster</option>
-          <option value="#import-preview">Preview</option>
-          <option value="#import-confirm">Confirm</option>
-          <option value="#import-reimport">Re-importing</option>
-          <option value="#import-remove-deleted">Remove Deleted Layers</option>
-          <option value="#tools-scale">To Scale</option>
-          <option value="#tools-lock-text">Lock Text</option>
-          <option value="#tools-lock-stroke">Lock Stroke</option>
-          <option value="#tools-link-images">Link Images</option>
-          <option value="#tools-reset">Reset Tools</option>
-          <option value="#tools-inspector">Inspector</option>
-          <option value="#components-button">Make Button</option>
-          <option value="#components-textbox">Make TextBox</option>
-          <option value="#components-scrollview">Make ScrollView</option>
-          <option value="#components-toggle">Make Toggle</option>
-          <option value="#workflow-guide">Full Workflow Guide</option>
-          <option value="#history">History</option>
-        </select>
+    <article class="prose io-fade">
+      <h2>Getting started</h2>
+      <p>Install the <a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma community plugin</a> and the <a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Studio plugin</a>. Open your UI frame in Figma, run Export, then paste or load the bundle in Studio to preview changes before confirming.</p>
+
+      <h2>Prefixes</h2>
+      <p>Use layer name prefixes to control Roblox classes (for example <span class="mono">.textbutton</span> for a TextButton). If you omit a prefix, Figblox creates a Frame by default.</p>
+
+      <h2>Smart Merge</h2>
+      <p>After you edit the design in Figma, export again. New and changed layers update in Studio; other Studio-only edits on unchanged layers are preserved.</p>
+
+      <h2>Images</h2>
+      <p>Raster and image fills export as assets. Match asset names in Roblox so Figblox can link decals automatically.</p>
+
+      <p><a href="index.html">← Back to home</a></p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand-block">
+        <a class="footer__brand" href="index.html">Figblox</a>
+        <p class="footer__tag muted">Design in Figma. Build in Roblox.</p>
       </div>
-
-      <article class="docs-main js-reveal">
-        <h2 id="getting-started">Getting Started</h2>
-
-        <h3 id="getting-overview">Overview</h3>
-        <p>
-          Figblox is a two-plugin workflow: export structured UI data from Figma, then import it into
-          Roblox Studio with merge-aware updates. You keep iterating in Figma while preserving the
-          Studio-side wiring and scripts you added after import.
-        </p>
-
-        <h3 id="getting-install">Install Both Plugins</h3>
-        <p>
-          Install the Figblox exporter from the Figma Community and the Figblox importer from the
-          Roblox Creator Store. You need both — Figma produces the JSON bundle and assets; Studio
-          consumes them inside your place.
-        </p>
-        <div class="docs-callout">
-          <strong>Tip:</strong> Pin both plugins for faster iteration during UI polish passes.
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3 class="footer__heading">Platform</h3>
+          <ul>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma plugin</a></li>
+            <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox plugin</a></li>
+          </ul>
         </div>
-        <ul>
-          <li>
-            <a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer"
-              >Figma Community (placeholder)</a
-            >
-          </li>
-          <li>
-            <a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer"
-              >Roblox Creator Store (placeholder)</a
-            >
-          </li>
-        </ul>
-
-        <h3 id="getting-flow">Basic Flow</h3>
-        <ol>
-          <li>Design UI in Figma using frames, components, and auto layout.</li>
-          <li>Run Export in the Figblox Figma plugin to generate JSON and image assets.</li>
-          <li>Open the Figblox Studio plugin, paste JSON (and attach the ZIP if prompted).</li>
-          <li>Review the preview diff, then Confirm to merge changes into your ScreenGui.</li>
-        </ol>
-
-        <h2 id="prefixes">Prefixes</h2>
-
-        <h3 id="prefixes-object">Object Prefixes</h3>
-        <p>
-          Object prefixes appear at the start of a layer name and tell Figblox which Roblox instance
-          type to create. If you omit a prefix, Figblox defaults to a Frame.
-        </p>
-        <div class="prefix-card">
-          <table class="prefix-table">
-            <tbody>
-              <tr><td>.frame</td><td>Frame</td></tr>
-              <tr><td>.textlabel</td><td>TextLabel</td></tr>
-              <tr><td>.textbutton</td><td>TextButton</td></tr>
-              <tr><td>.textbox</td><td>TextBox</td></tr>
-              <tr><td>.imagelabel</td><td>ImageLabel</td></tr>
-              <tr><td>.imagebutton</td><td>ImageButton</td></tr>
-              <tr><td>.scrollingframe / .scrollv</td><td>Vertical ScrollingFrame</td></tr>
-              <tr><td>.scrollingframex / .scrollh</td><td>Horizontal ScrollingFrame</td></tr>
-              <tr><td>.viewportframe</td><td>ViewportFrame</td></tr>
-              <tr><td>.canvas / .canvasgroup</td><td>CanvasGroup</td></tr>
-            </tbody>
-          </table>
+        <div class="footer__col">
+          <h3 class="footer__heading">Resources</h3>
+          <ul>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="index.html#changelog">Changelog</a></li>
+          </ul>
         </div>
-
-        <h3 id="prefixes-modifier">Modifier Prefixes</h3>
-        <p>
-          Modifiers stack with object prefixes and change export behavior — rasterization, skipping,
-          lock hints, or interaction state markers.
-        </p>
-        <div class="prefix-card">
-          <table class="prefix-table">
-            <tbody>
-              <tr><td>.raster</td><td>Renders the layer as a PNG</td></tr>
-              <tr><td>.gray / .grayscale</td><td>Exports as grayscale PNG</td></tr>
-              <tr><td>.ignore</td><td>Skips layer during export</td></tr>
-              <tr><td>.lock</td><td>Applies lock behavior</td></tr>
-              <tr><td>.parent</td><td>Makes this child the Roblox parent of its group</td></tr>
-              <tr>
-                <td>.hover / .clicked / .pressed / .toggled / .disabled</td>
-                <td>State markers</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="footer__col">
+          <h3 class="footer__heading">Community</h3>
+          <ul>
+            <li><a href="index.html#get">Support</a></li>
+          </ul>
         </div>
-
-        <h3 id="prefixes-combining">Combining Prefixes</h3>
-        <p>
-          Combine modifiers left-to-right with the object prefix at the start of the name. Order can
-          affect how Figblox interprets raster and scroll hints — keep the object type prefix first,
-          then modifiers.
-        </p>
-        <div class="code-block" aria-label="Combining prefix examples">
-          <span class="kw">.textlabel</span> <span class="str">Title</span><br />
-          <span class="kw">.gray .raster .imagelabel</span> <span class="str">Badge</span><br />
-          <span class="kw">.scrollh .raster</span> <span class="str">Banner</span>
-        </div>
-        <div class="docs-callout">
-          <strong>Note:</strong> If Figblox warns about an ambiguous combination, simplify the layer
-          name or split content into child layers with explicit prefixes.
-        </div>
-
-        <h3 id="prefixes-parent">Parent Override</h3>
-        <p>
-          The <code>.parent</code> modifier marks a child layer as the Roblox parent for its sibling
-          subtree during import. Use it when you need a specific instance under a group to become the
-          container for generated children.
-        </p>
-
-        <h2 id="auto-layout">Auto Layout</h2>
-
-        <h3 id="layout-scroll">Scroll Containers</h3>
-        <p>
-          In Figma, set overflow on frames to vertical or horizontal where appropriate. Figblox maps
-          eligible frames to <code>ScrollingFrame</code> with direction and clipping aligned to
-          your auto layout choices.
-        </p>
-
-        <h3 id="layout-roblox">Auto Layout → Roblox</h3>
-        <p>
-          Auto layout generally maps to <code>UIListLayout</code>, <code>UIGridLayout</code>, and
-          <code>UIPadding</code> depending on structure. Spacing, padding, and alignment are carried
-          into layout objects so your hierarchy stays responsive after To Scale runs on import.
-        </p>
-
-        <h2 id="images">Images</h2>
-
-        <h3 id="images-export">How Export Works</h3>
-        <p>
-          Raster layers and configured image fills export as PNGs packaged with your JSON. Figblox
-          deduplicates identical bitmaps and records stable names so Studio can link assets
-          consistently across re-imports.
-        </p>
-
-        <h3 id="images-import">Importing Images</h3>
-        <p>
-          When you confirm an import, Figblox matches exported filenames to Roblox assets where
-          possible. If a decal or image object exists in your place and names align, the importer
-          links without manual assignment.
-        </p>
-        <div class="docs-callout">
-          <strong>Important:</strong> For automatic linking, keep asset names predictable and
-          consistent between exports.
-        </div>
-
-        <h3 id="images-reimport">Re-importing Images</h3>
-        <p>
-          Updated PNGs from Figma replace prior associations only where the merge detects a change.
-          Non-image Studio tweaks on instances are preserved according to the smart merge rules.
-        </p>
-
-        <h2 id="make-raster">Raster layers</h2>
-
-        <h3 id="raster-make">Make Raster</h3>
-        <p>
-          Tag layers with <code>.raster</code> to force bitmap export. Use this for effects Roblox
-          text and vector shapes cannot easily replicate from pure GUI instances.
-        </p>
-
-        <h3 id="raster-clear">Clear Raster</h3>
-        <p>
-          Remove the <code>.raster</code> modifier to return a layer to normal vector export behavior
-          on the next run. Re-export to refresh the bundle.
-        </p>
-
-        <h3 id="raster-when">When to Use Raster</h3>
-        <p>
-          Prefer native instances when you need live text or scalable UI. Rasterize when fidelity
-          matters more than editability — soft shadows, complex blends, or tightly designed badges.
-        </p>
-
-        <h2 id="import-process">Import Process</h2>
-
-        <h3 id="import-preview">Preview</h3>
-        <p>
-          Each import starts with a diff-style preview so you can see what would change before it
-          touches your hierarchy.
-        </p>
-        <div class="docs-pills">
-          <span class="pill pill--diff pill--new">[+] New layer</span>
-          <span class="pill pill--diff pill--chg">[~] Changed</span>
-          <span class="pill pill--diff pill--sync">[=] Already in sync</span>
-        </div>
-        <p>
-          New layers appear as additions. Changed layers highlight differences from Studio. In-sync
-          layers require no update for that import.
-        </p>
-
-        <h3 id="import-confirm">Confirm</h3>
-        <p>
-          Confirm applies the merge, runs linking for images, and executes To Scale, Lock Text, and
-          Lock Stroke as part of the same pass — you do not need to trigger those tools manually for
-          a standard import.
-        </p>
-
-        <h3 id="import-reimport">Re-importing</h3>
-        <p>
-          Re-importing merges intelligently: updates from Figma apply where Figblox detects changes,
-          while unrelated Studio edits remain on instances that are still tied to their originating
-          layers.
-        </p>
-
-        <h3 id="import-remove-deleted">Remove Deleted Layers</h3>
-        <p>
-          By default, layers removed in Figma are not deleted in Studio. Enable “Remove deleted layers
-          on import” when you want deletions in Figma to prune matching instances on confirm.
-        </p>
-        <div class="docs-callout">
-          <strong>Warning:</strong> Pruning can remove instances you still need if names changed or
-          mappings drifted — preview carefully.
-        </div>
-
-        <h2 id="tools">Tools</h2>
-
-        <h3 id="tools-scale">To Scale</h3>
-        <p>
-          Converts pixel measurements to scale-friendly values so UI responds predictably across
-          viewport sizes. Confirm runs this during import.
-        </p>
-
-        <h3 id="tools-lock-text">Lock Text</h3>
-        <p>
-          Preserves text sizing behavior when parent containers scale — helpful for keeping labels
-          crisp and readable.
-        </p>
-
-        <h3 id="tools-lock-stroke">Lock Stroke</h3>
-        <p>
-          Keeps <code>UIStroke</code> thickness stable instead of stretching with parent scale during
-          responsive adjustments.
-        </p>
-
-        <h3 id="tools-link-images">Link Images</h3>
-        <p>
-          Attempts to bind exported PNG references to existing Roblox assets by name and path hints,
-          reducing manual decal wiring.
-        </p>
-
-        <h3 id="tools-reset">Reset Tools</h3>
-        <p>
-          Reset returns tool toggles and transient importer settings to defaults for the current
-          session — useful when experimenting with partial imports.
-        </p>
-
-        <h3 id="tools-inspector">Inspector</h3>
-        <p>
-          The inspector surfaces per-instance mapping metadata and warnings from the last preview or
-          import, including unresolved images or ambiguous prefixes.
-        </p>
-
-        <h2 id="components">Components</h2>
-
-        <h3 id="components-button">Make Button</h3>
-        <p>
-          Converts a <code>Frame</code> or <code>ImageLabel</code> into an interactive button with
-          appropriate input hooks while preserving children where possible.
-        </p>
-
-        <h3 id="components-textbox">Make TextBox</h3>
-        <p>
-          Turns a <code>TextLabel</code> into an editable <code>TextBox</code> configured for
-          player input.
-        </p>
-
-        <h3 id="components-scrollview">Make ScrollView</h3>
-        <p>
-          Wraps an existing <code>Frame</code> with a <code>ScrollingFrame</code> and moves content
-          into a scrollable subtree.
-        </p>
-
-        <h3 id="components-toggle">Make Toggle</h3>
-        <p>
-          Builds a toggle control from a root <code>Frame</code> with On/Off child frames that the
-          plugin wires into a single boolean control.
-        </p>
-
-        <h2 id="workflow">Workflow</h2>
-
-        <h3 id="workflow-guide">Full Workflow Guide</h3>
-        <ol>
-          <li>Structure Figma layers with prefixes early — rename passes are cheaper before export.</li>
-          <li>Export JSON + assets whenever the design meaningfully changes.</li>
-          <li>Import into a staging ScreenGui first if you are unsure about merge scope.</li>
-          <li>Script against stable instance names; avoid one-off renames in Studio that fight Figma.</li>
-          <li>Re-export and merge often — smaller deltas are easier to read in preview.</li>
-        </ol>
-
-        <h2 id="history">History</h2>
-        <p>
-          Figblox tracks recent imports in the Studio plugin so you can compare bundle timestamps and
-          quickly roll back to a prior JSON paste if needed. This history is local to your machine and
-          place session — it is not uploaded to Figblox servers.
-        </p>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer__top">
-          <a class="logo" href="index.html">
-            <span class="logo__mark" aria-hidden="true"></span>
-            Figblox
-          </a>
-          <p>Design in Figma. Build in Roblox.</p>
-        </div>
-        <div class="footer__grid">
-          <div class="footer__col">
-            <h4>Platform</h4>
-            <ul>
-              <li><a href="index.html#get">Get Figblox</a></li>
-              <li><a href="index.html#pricing">Pricing</a></li>
-              <li><a href="index.html#changelog">Changelog</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Resources</h4>
-            <ul>
-              <li><a href="docs.html">Docs</a></li>
-              <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma Plugin</a></li>
-              <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Plugin</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Community</h4>
-            <ul>
-              <li><a href="#">Discord</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer__bar">
-          <span>© 2026 Figblox. All rights reserved.</span>
-          <div class="footer__bar-links">
-            <a href="privacy.html">Privacy</a>
-            <a href="#">Terms</a>
-          </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="index.html#get">Terms</a></li>
+          </ul>
         </div>
       </div>
-    </footer>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 Figblox. All rights reserved.</span>
+      <span class="footer__bar-links">
+        <a href="privacy.html">Privacy</a>
+        <span class="footer__sep">·</span>
+        <a href="index.html#get">Terms</a>
+      </span>
+    </div>
+  </footer>
 
-    <script src="main.js"></script>
-  </body>
+  <script src="main.js" defer></script>
+</body>
 </html>

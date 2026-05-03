@@ -1,701 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Figblox — Design in Figma. Build in Roblox.</title>
-    <meta
-      name="description"
-      content="Figblox is a two-plugin system that moves your UI from Figma into Roblox Studio — no rebuilding by hand."
-    />
-    <meta property="og:title" content="Figblox — Design in Figma. Build in Roblox." />
-    <meta
-      property="og:description"
-      content="Export Figma UI to JSON, import into Roblox Studio. Smart merge, auto layout mapping, and prefix-based control."
-    />
-    <meta property="og:image" content="https://example.com/og-figblox.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Figblox — Design in Figma. Build in Roblox." />
-    <meta
-      name="twitter:description"
-      content="Export Figma UI to JSON, import into Roblox Studio. Smart merge, auto layout mapping, and prefix-based control."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container site-header__inner">
-        <a class="logo" href="index.html">
-          <span class="logo__mark" aria-hidden="true"></span>
-          Figblox
-        </a>
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__link" href="#features" data-section="#features">Features</a>
-          <a class="nav__link" href="#how-it-works" data-section="#how-it-works">How It Works</a>
-          <a class="nav__link" href="#pricing" data-section="#pricing">Pricing</a>
-          <a class="nav__link" href="#changelog" data-section="#changelog">Changelog</a>
-          <a class="nav__link" href="docs.html">Docs</a>
-          <a class="nav__link" href="#faq" data-section="#faq">FAQ</a>
-        </nav>
-        <div class="nav__actions">
-          <a class="nav__link nav__link--ghost" href="#">Log in</a>
-          <a class="btn btn--primary" href="#get">Get Figblox</a>
-        </div>
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="menu-toggle__bars">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figblox — Design in Figma. Build in Roblox.</title>
+  <meta name="description" content="Push your design from Figma into Roblox Studio in one export. No rebuilding. No manual positioning.">
+  <meta property="og:title" content="Figblox — Design in Figma. Build in Roblox.">
+  <meta property="og:description" content="Push your design from Figma into Roblox Studio in one export. Full round-trip workflow with Smart Merge and import preview.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Figblox — Design in Figma. Build in Roblox.">
+  <meta name="twitter:description" content="Push your design from Figma into Roblox Studio in one export.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="index.html">Figblox</a>
+      <ul class="nav__links nav__links--center">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a class="nav__login" href="#get">Log in</a>
+        <a class="btn btn--primary btn--pill" href="#get">Get Figblox</a>
       </div>
-    </header>
-
-    <div class="mobile-overlay" id="mobile-menu" aria-hidden="true">
-      <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#changelog">Changelog</a>
-      <a href="docs.html">Docs</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav__link nav__link--ghost" href="#">Log in</a>
-      <a class="btn btn--primary" href="#get">Get Figblox</a>
+      <button type="button" class="nav__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+    <div class="nav-overlay" id="nav-drawer" hidden>
+      <ul class="nav-overlay__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        <li><a href="#get">Log in</a></li>
+        <li><a class="btn btn--primary btn--pill nav-overlay__cta" href="#get">Get Figblox</a></li>
+      </ul>
     </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="container hero__inner">
-          <div class="hero__copy js-reveal">
-            <div class="hero-announcement">
-              <span class="hero-announcement__icon" aria-hidden="true">✦</span>
-              Now with smart merge — update designs without losing Studio edits
+  <main>
+    <section class="hero section section--hero io-fade">
+      <div class="hero__badge badge badge--pill">
+        <span class="badge__dot" aria-hidden="true"></span>
+        Version 1.0 now available
+      </div>
+      <h1 class="hero__title">Design in Figma.<br>Build in Roblox.</h1>
+      <p class="hero__sub muted">Push your design from Figma into Roblox Studio in one export.<br>No rebuilding. No manual positioning.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--hero-dark btn--pill" href="#get">Get Figblox →</a>
+        <a class="btn btn--secondary btn--pill" href="docs.html">Read the Docs ↗</a>
+      </div>
+      <p class="hero__trust muted">Full access to both plugins. No subscription required.</p>
+
+      <div class="hero-demo card card--demo">
+        <div class="hero-demo__grid">
+          <div class="hero-demo__panel">
+            <div class="hero-demo__panel-title">Figma Layers</div>
+            <ul class="hero-demo__layers">
+              <li>.textbutton HUD</li>
+              <li>.imagelabel BG</li>
+              <li>.scrollingframe List</li>
+            </ul>
+          </div>
+          <div class="hero-demo__panel hero-demo__panel--json">
+            <div class="hero-demo__panel-title">JSON</div>
+            <div class="hero-demo__json-block" aria-hidden="true">
+              <span class="hero-demo__brace">{</span>
+              <span class="hero-demo__json-dots">···</span>
+              <span class="hero-demo__brace">}</span>
             </div>
-            <h1 class="hero__title">Design in Figma. Build in Roblox.</h1>
-            <p class="muted mb-0">
-              Figblox is a two-plugin system that moves your UI from Figma into Roblox Studio — no
-              rebuilding by hand.
-            </p>
-            <div class="hero__ctas">
-              <a class="btn btn--primary" href="#get">Get Figblox</a>
-              <a class="btn btn--outline" href="docs.html">Read the Docs</a>
-            </div>
-            <div class="hero__trust">
-              <span class="pill">Available on Figma Community</span>
-              <span class="pill">Roblox Creator Store</span>
-            </div>
+            <span class="hero-demo__flow-arrow">→</span>
           </div>
-
-          <div class="hero-mock js-reveal" data-delay="100">
-            <div class="hero-mock__grid">
-              <div class="hero-mock__panel">
-                <div class="hero-mock__panel-title">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5" />
-                    <path d="M4 10h16M9 6V4" stroke="currentColor" stroke-width="1.5" />
-                  </svg>
-                  Layers
-                </div>
-                <ul class="hero-mock__layers">
-                  <li>· .textbutton HUD</li>
-                  <li>· .imagelabel Background</li>
-                  <li>· .scrollingframe Leaderboard</li>
-                </ul>
-              </div>
-
-              <div class="hero-mock__center">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M5 12h14m0 0l-4-4m4 4l-4 4"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <span class="hero-mock__json-label">JSON</span>
-              </div>
-
-              <div class="hero-mock__panel">
-                <div class="hero-mock__panel-title">Import preview</div>
-                <div class="hero-mock__diff">
-                  <div class="hero-mock__diff-row">
-                    <span>[+] HUD</span>
-                    <span class="badge badge--hero-new">new</span>
-                  </div>
-                  <div class="hero-mock__diff-row">
-                    <span>[~] Background</span>
-                    <span class="badge badge--hero-chg">changed</span>
-                  </div>
-                  <div class="hero-mock__diff-row">
-                    <span>[=] Leaderboard</span>
-                    <span class="badge badge--hero-sync">sync</span>
-                  </div>
-                </div>
-                <div class="hero-mock__confirm">
-                  <span class="hero-mock__confirm-note">3 changes ready</span>
-                  <button type="button" class="btn btn--primary btn--xs" tabindex="-1">Confirm</button>
-                </div>
-              </div>
-            </div>
+          <div class="hero-demo__panel">
+            <div class="hero-demo__panel-title">Roblox Import</div>
+            <ul class="hero-demo__diff">
+              <li><span class="pill pill--add">[+]</span> HUD</li>
+              <li><span class="pill pill--chg">[~]</span> Background</li>
+              <li><span class="pill pill--eq">[=]</span> List</li>
+            </ul>
           </div>
         </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="overview">
-        <div class="container overview-chips text-center">
-          <p class="section-label">Built for Roblox developers</p>
-          <h2 class="overview-chips__headline js-reveal">
-            The only tool you need to move UI from Figma to Roblox.
-          </h2>
-          <div class="chips-row js-reveal">
-            <span class="chip">Frames</span>
-            <span class="chip">TextLabels</span>
-            <span class="chip">ImageLabels</span>
-            <span class="chip">Buttons</span>
-            <span class="chip">ScrollFrames</span>
-            <span class="chip">Auto Layout</span>
-          </div>
+        <div class="hero-demo__footer">
+          <span class="muted hero-demo__changes">3 changes ready</span>
+          <button type="button" class="btn btn--primary btn--pill hero-demo__confirm" disabled>Confirm</button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <div class="section-divider" role="presentation"></div>
+    <section class="section io-fade">
+      <div class="section__label badge badge--pill badge--muted">⌘ Figma × Roblox</div>
+      <h2 class="section__title section__title--lg">The only tool you need to move<br>UI from Figma to Roblox.</h2>
+      <p class="section__body muted">Figblox handles layout, images, scrolling, and scaling automatically.<br>No extra plugins. No manual work.</p>
+      <div class="chips">
+        <span class="chip">Frames</span>
+        <span class="chip">TextLabels</span>
+        <span class="chip">ImageLabels</span>
+        <span class="chip">Buttons</span>
+        <span class="chip">ScrollFrames</span>
+        <span class="chip">Auto Layout</span>
+      </div>
+    </section>
 
-      <section class="section" id="how-it-works">
-        <div class="container">
-          <h2 class="text-center js-reveal">One export. One import. Done.</h2>
-          <p class="text-center muted js-reveal" style="max-width: 42rem; margin-inline: auto">
-            Ship UI faster with a pipeline built for iteration — export once, import once, keep your
-            Studio logic intact.
-          </p>
-          <div class="steps-row mt-lg">
-            <article class="card step-card js-reveal">
-              <span class="step-card__num">1</span>
-              <h3 class="card__title">Design</h3>
-              <p>
-                Build your UI in Figma using any frame, component, or auto layout.
-              </p>
-            </article>
-            <article class="card step-card js-reveal" data-delay="80">
-              <span class="step-card__num">2</span>
-              <h3 class="card__title">Export</h3>
-              <p>
-                Figblox exports your design as JSON + image assets with one click.
-              </p>
-            </article>
-            <article class="card step-card js-reveal" data-delay="160">
-              <span class="step-card__num">3</span>
-              <h3 class="card__title">Import</h3>
-              <p>
-                Paste the JSON into the Roblox plugin. Preview changes, then Confirm.
-              </p>
-            </article>
-          </div>
-          <div class="callout js-reveal">
-            <strong>Re-import after changes?</strong> Figblox merges updates — Studio edits you made
-            stay intact.
-          </div>
+    <section class="section features io-fade" aria-labelledby="features-heading">
+      <h2 id="features-heading" class="visually-hidden">Features</h2>
+      <article class="feature-card card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 16V4m0 0l4 4m-4-4L8 8M5 20h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 20v-4h14v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="features">
-        <div class="container">
-          <h2 class="text-center js-reveal">Everything you need to ship Roblox UI fast</h2>
-          <div class="feature-list">
-            <article class="feature-highlight js-reveal">
-              <div class="feature-highlight__icon" aria-hidden="true">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                  <rect x="4" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5" />
-                  <circle cx="10" cy="11" r="2" fill="currentColor" opacity="0.45" />
-                </svg>
-              </div>
-              <div class="feature-highlight__body">
-                <h3 class="feature-highlight__title">Smart Image Export</h3>
-                <p class="mb-0">
-                  Image fills and .raster layers export as PNGs bundled into a ZIP. Figblox
-                  deduplicates and links matching assets automatically.
-                </p>
-                <p class="feature-highlight__stat">Every layer. Every property.</p>
-              </div>
-            </article>
-
-            <article class="feature-highlight feature-highlight--reverse js-reveal">
-              <div class="feature-highlight__icon" aria-hidden="true">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                  <path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="feature-highlight__body">
-                <h3 class="feature-highlight__title">Smart Merge</h3>
-                <p class="mb-0">
-                  Re-export from Figma and Figblox merges changes instead of overwriting. Your Studio
-                  edits stay where you left them.
-                </p>
-                <div class="feature-highlight__badges">
-                  <span class="pill">[+] New</span>
-                  <span class="pill">[~] Changed</span>
-                  <span class="pill">[=] In sync</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="feature-highlight js-reveal">
-              <div class="feature-highlight__icon" aria-hidden="true">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                  <rect x="4" y="5" width="16" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" />
-                  <rect x="4" y="13" width="10" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" opacity="0.65" />
-                </svg>
-              </div>
-              <div class="feature-highlight__body">
-                <h3 class="feature-highlight__title">Auto Layout → UIListLayout</h3>
-                <p class="mb-0">
-                  Figma auto layout maps to UIListLayout, UIGridLayout, and UIPadding automatically.
-                  Spacing, alignment, and direction carry over.
-                </p>
-                <p class="feature-highlight__stat">Spacing, alignment, and direction carried over.</p>
-              </div>
-            </article>
-
-            <article class="feature-highlight feature-highlight--reverse js-reveal">
-              <div class="feature-highlight__icon" aria-hidden="true">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </div>
-              <div class="feature-highlight__body">
-                <h3 class="feature-highlight__title">Responsive scaling</h3>
-                <p class="mb-0">
-                  To Scale, Lock Text, and Lock Stroke run when you confirm an import — px becomes
-                  percentages, text stays crisp, strokes stay consistent.
-                </p>
-                <p class="feature-highlight__stat">Runs automatically on Confirm.</p>
-              </div>
-            </article>
-          </div>
+        <h3 class="feature-card__title">Export in One Click</h3>
+        <p class="feature-card__desc muted">Click Export in the Figma plugin. Figblox packages your entire design as JSON and image assets instantly.</p>
+      </article>
+      <article class="feature-card card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18a4 4 0 100-8 4 4 0 000 8zm12 0a4 4 0 100-8 4 4 0 000 8zM9 15l6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="platform-overview">
-        <div class="container">
-          <div class="platform-overview__grid">
-            <div class="js-reveal">
-              <p class="section-label">Platform overview</p>
-              <h2 class="mb-0" style="font-size: clamp(1.75rem, 3vw, 2.25rem)">
-                More than a Figma exporter.
-              </h2>
-              <p class="mt-lg mb-0">
-                Figblox is a two-plugin system that moves your UI from Figma into Roblox Studio — no
-                rebuilding by hand. Merge updates without throwing away the scripts and tweaks you added
-                in Studio.
-              </p>
-              <ul class="platform-checklist">
-                <li>Prefix system for exact Roblox class control</li>
-                <li>Import preview — see every change before it lands</li>
-                <li>Image deduplication and auto-linking</li>
-                <li>History with undo/redo inside the plugin</li>
-                <li>One-click components: Button, ScrollView, Toggle</li>
-              </ul>
-            </div>
-            <div class="platform-card platform-mock js-reveal" data-delay="80">
-              <div class="hero-mock__panel-title">Preview</div>
-              <div class="hero-mock__diff">
-                <div class="hero-mock__diff-row">
-                  <span>[+] HUD</span>
-                  <span class="badge badge--hero-new">new</span>
-                </div>
-                <div class="hero-mock__diff-row">
-                  <span>[~] ShopModal</span>
-                  <span class="badge badge--hero-chg">changed</span>
-                </div>
-                <div class="hero-mock__diff-row">
-                  <span>[=] HealthBar</span>
-                  <span class="badge badge--hero-sync">sync</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <h3 class="feature-card__title">Smart Merge</h3>
+        <p class="feature-card__desc muted">Re-export after updating your design. Figblox merges changes — new layers appear, changed layers update, and your Studio edits stay untouched.</p>
+      </article>
+      <article class="feature-card card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h7v7H4V5zm9 0h7v7h-7V5zM4 14h7v7H4v-7zm9 0h7v7h-7v-7z" stroke="currentColor" stroke-width="1.75"/></svg>
         </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section">
-        <div class="container">
-          <h2 class="text-center js-reveal">Prefix Reference</h2>
-          <p class="text-center muted js-reveal" style="max-width: 40rem; margin-inline: auto">
-            Put prefixes at the start of a layer name to control what Roblox object Figblox creates.
-          </p>
-          <div class="prefix-card mt-lg js-reveal">
-            <h3>Object Prefixes</h3>
-            <table class="prefix-table">
-              <tbody>
-                <tr><td>.frame</td><td>Frame</td></tr>
-                <tr><td>.textlabel</td><td>TextLabel</td></tr>
-                <tr><td>.textbutton</td><td>TextButton</td></tr>
-                <tr><td>.textbox</td><td>TextBox</td></tr>
-                <tr><td>.imagelabel</td><td>ImageLabel</td></tr>
-                <tr><td>.imagebutton</td><td>ImageButton</td></tr>
-                <tr><td>.scrollingframe / .scrollv</td><td>Vertical ScrollingFrame</td></tr>
-                <tr><td>.scrollingframex / .scrollh</td><td>Horizontal ScrollingFrame</td></tr>
-                <tr><td>.viewportframe</td><td>ViewportFrame</td></tr>
-                <tr><td>.canvas / .canvasgroup</td><td>CanvasGroup</td></tr>
-              </tbody>
-            </table>
-            <h3>Modifier Prefixes</h3>
-            <table class="prefix-table">
-              <tbody>
-                <tr><td>.raster</td><td>Renders the layer as a PNG</td></tr>
-                <tr><td>.gray / .grayscale</td><td>Exports as grayscale PNG</td></tr>
-                <tr><td>.ignore</td><td>Skips layer during export</td></tr>
-                <tr><td>.lock</td><td>Applies lock behavior</td></tr>
-                <tr><td>.parent</td><td>Makes this child the Roblox parent of its group</td></tr>
-                <tr><td>.hover / .clicked / .pressed / .toggled / .disabled</td><td>State markers</td></tr>
-              </tbody>
-            </table>
-            <div class="code-block" role="region" aria-label="Example layer names">
-              <span class="kw">.textlabel</span> <span class="str">Health Bar</span><br />
-              <span class="kw">.imagebutton</span> <span class="str">Play Button</span><br />
-              <span class="kw">.gray .scrollh .raster</span> <span class="str">Card</span>
-            </div>
-          </div>
+        <h3 class="feature-card__title">Auto Layout → UIListLayout</h3>
+        <p class="feature-card__desc muted">Figma auto layout maps directly to UIListLayout, UIGridLayout, and UIPadding. Spacing, direction, and alignment carry over automatically.</p>
+      </article>
+      <article class="feature-card card">
+        <div class="feature-card__icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-      </section>
+        <h3 class="feature-card__title">Responsive by Default</h3>
+        <p class="feature-card__desc muted">To Scale converts pixel values to percentages. Lock Text and Lock Stroke keep UI crisp at every resolution. All applied automatically on Confirm.</p>
+      </article>
+    </section>
 
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section">
-        <div class="container">
-          <h2 class="text-center js-reveal">Preview before anything changes</h2>
-          <div class="diff-row mt-lg">
-            <article class="card diff-card js-reveal">
-              <div class="badge badge--new">[+]</div>
-              <h3 class="card__title">New layer</h3>
-              <p class="mb-0">Appears in the preview when Figma adds something new since your last import.</p>
-            </article>
-            <article class="card diff-card js-reveal" data-delay="80">
-              <div class="badge badge--chg">[~]</div>
-              <h3 class="card__title">Changed</h3>
-              <p class="mb-0">Shows when layout, text, or properties differ from what’s in Studio.</p>
-            </article>
-            <article class="card diff-card js-reveal" data-delay="160">
-              <div class="badge badge--sync">[=]</div>
-              <h3 class="card__title">Already in sync</h3>
-              <p class="mb-0">No updates needed — import left these layers untouched.</p>
-            </article>
-          </div>
-          <p class="text-center muted mt-lg js-reveal" style="max-width: 46rem; margin-inline: auto">
-            Click Confirm. Figblox merges JSON, links images, applies To Scale, Lock Text, and Lock
-            Stroke — automatically.
-          </p>
-        </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section">
-        <div class="container">
-          <h2 class="text-center js-reveal">Built-in Tools</h2>
-          <div class="tools-row mt-lg">
-            <article class="card js-reveal">
-              <h3 class="card__title">To Scale</h3>
-              <p class="mb-0">
-                Converts px values to percentages for responsive UI across screen sizes.
-              </p>
-            </article>
-            <article class="card js-reveal" data-delay="60">
-              <h3 class="card__title">Lock Text</h3>
-              <p class="mb-0">Keeps text size fixed when the UI scales.</p>
-            </article>
-            <article class="card js-reveal" data-delay="120">
-              <h3 class="card__title">Lock Stroke</h3>
-              <p class="mb-0">Keeps UIStroke thickness from scaling.</p>
-            </article>
-            <article class="card js-reveal" data-delay="180">
-              <h3 class="card__title">Link Images</h3>
-              <p class="mb-0">
-                Matches exported images to Roblox Decals by name and links them.
-              </p>
-            </article>
-          </div>
-          <p class="text-center muted mt-lg js-reveal">
-            You don’t need to run these manually. Confirming an import handles them automatically.
-          </p>
-        </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section">
-        <div class="container">
-          <h2 class="text-center js-reveal">One-click Components</h2>
-          <div class="components-row mt-lg">
-            <article class="card component-card js-reveal">
-              <h3 class="card__title">Make Button</h3>
-              <p class="mb-0">Turns a Frame or ImageLabel into a clickable button.</p>
-            </article>
-            <article class="card component-card js-reveal" data-delay="60">
-              <h3 class="card__title">Make TextBox</h3>
-              <p class="mb-0">Converts a TextLabel into an editable text field.</p>
-            </article>
-            <article class="card component-card js-reveal" data-delay="120">
-              <h3 class="card__title">Make ScrollView</h3>
-              <p class="mb-0">Wraps a Frame into a ScrollingFrame with scrollable content.</p>
-            </article>
-            <article class="card component-card js-reveal" data-delay="180">
-              <h3 class="card__title">Make Toggle</h3>
-              <p class="mb-0">Creates a toggle from a Frame with On/Off child frames.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="pricing">
-        <div class="container">
-          <h2 class="text-center js-reveal">Pricing</h2>
-          <p class="text-center muted js-reveal" style="max-width: 36rem; margin-inline: auto">
-            Choose the plan that fits your studio. Replace placeholder pricing when you launch.
-          </p>
-          <div class="pricing-grid">
-            <article class="pricing-card js-reveal">
-              <h3 class="pricing-card__price">Free</h3>
-              <p class="pricing-card__tag">Try it out</p>
-              <ul class="pricing-card__features">
-                <li>Figma plugin</li>
-                <li>Roblox plugin</li>
-                <li>Limited exports/day</li>
-                <li>Community support</li>
-              </ul>
-              <a class="btn btn--outline" href="https://www.figma.com/community">Install Free</a>
-            </article>
-
-            <article class="pricing-card pricing-card--featured js-reveal" data-delay="60">
-              <h3 class="pricing-card__price">$[X] <span style="font-size: 1rem; font-weight: 600">one-time</span></h3>
-              <p class="pricing-card__tag">For serious Roblox developers</p>
-              <ul class="pricing-card__features">
-                <li>Unlimited exports</li>
-                <li>Smart merge</li>
-                <li>All prefixes + tools</li>
-                <li>Priority support</li>
-                <li>Free updates</li>
-              </ul>
-              <a class="btn btn--primary" href="#get">Get Figblox</a>
-            </article>
-
-            <article class="pricing-card js-reveal" data-delay="120">
-              <h3 class="pricing-card__price">Coming Soon</h3>
-              <p class="pricing-card__tag">For studios</p>
-              <ul class="pricing-card__features">
-                <li>Everything in Pro</li>
-                <li>Multi-seat license</li>
-                <li>Dedicated support</li>
-              </ul>
-              <a class="btn btn--outline btn--outline-muted" href="#">Join Waitlist</a>
-            </article>
-          </div>
-          <p class="pricing-footnote js-reveal">
-            All plans include access to both plugins and future updates.
-          </p>
-        </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="changelog">
-        <div class="container text-center">
-          <h2 class="js-reveal">Changelog</h2>
-          <p class="muted js-reveal" style="max-width: 36rem; margin-inline: auto">
-            Highlights from recent Figblox releases. Full history lives inside the Studio plugin.
-          </p>
-          <ul class="changelog-list js-reveal">
-            <li><strong>May 2026</strong> — Smart merge refinements and faster PNG packaging.</li>
-            <li><strong>April 2026</strong> — Import preview badges and Link Images improvements.</li>
-            <li><strong>March 2026</strong> — Auto Layout → Roblox layout parity updates.</li>
+    <section class="section platform io-fade">
+      <div class="platform__grid">
+        <div class="platform__text">
+          <p class="platform__label muted">Platform overview</p>
+          <h2 class="platform__title">More than an exporter.</h2>
+          <p class="platform__body muted">Figblox is a full round-trip workflow. Design, export, preview every change before it lands, confirm, and re-import whenever you update.</p>
+          <ul class="checklist">
+            <li>Prefix system for exact Roblox class control</li>
+            <li>Import preview — <span class="nowrap">[+]</span> new <span class="nowrap">[~]</span> changed <span class="nowrap">[=]</span> in sync</li>
+            <li>Image deduplication and auto-linking</li>
+            <li>Undo/redo history inside the plugin</li>
+            <li>One-click components: Button, ScrollView, Toggle</li>
           </ul>
         </div>
-      </section>
-
-      <div class="section-divider" role="presentation"></div>
-
-      <section class="section" id="faq">
-        <div class="container">
-          <h2 class="text-center js-reveal">Frequently Asked Questions</h2>
-          <div class="faq-list mt-lg">
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                Do I have to use prefixes on every layer?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>
-                  No. If there’s no prefix, Figblox creates a Frame by default.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                What happens if I delete something in Figma?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>
-                  It stays in Roblox unless you enable “Remove deleted layers on import.”
-                </p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                Can I edit the UI in Studio after importing?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>
-                  Yes. Figblox updates what changed in Figma and leaves your other Studio edits alone.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                Why are my images not showing up?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>
-                  Raster and image layers need matching Roblox image or decal assets to link. If the
-                  asset exists and the name matches, Figblox links it automatically.
-                </p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                Do I still need to run To Scale or Lock Text manually?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>No. Confirming an import handles those automatically.</p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                Can I use Figblox for multiple games?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>Yes. Each ScreenGui is managed separately.</p>
-              </div>
-            </div>
-            <div class="faq-item js-reveal">
-              <button type="button" class="faq-item__trigger" aria-expanded="false">
-                What if something imports wrong?
-                <span class="faq-item__chevron" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-              </button>
-              <div class="faq-item__panel">
-                <p>Add .raster to that layer in Figma and re-export it as an image.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--tight" id="get">
-        <div class="container js-reveal">
-          <div class="cta-banner">
-            <h2>Ready to stop rebuilding UI by hand?</h2>
-            <p class="muted mb-0" style="max-width: 32rem; margin-inline: auto">
-              Install both plugins and go from Figma to Roblox in minutes.
-            </p>
-            <div class="hero__ctas">
-              <a class="btn btn--primary" href="#get">Get Figblox</a>
-              <a class="btn btn--outline" href="docs.html">Read the Docs</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer__top">
-          <a class="logo" href="index.html">
-            <span class="logo__mark" aria-hidden="true"></span>
-            Figblox
-          </a>
-          <p>Design in Figma. Build in Roblox.</p>
-        </div>
-        <div class="footer__grid">
-          <div class="footer__col">
-            <h4>Platform</h4>
-            <ul>
-              <li><a href="#get">Get Figblox</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#changelog">Changelog</a></li>
+        <div class="platform__visual card">
+          <div class="platform-diff">
+            <div class="platform-diff__header muted">Import preview</div>
+            <ul class="platform-diff__list">
+              <li><span class="pill pill--add">[+]</span> <span class="mono">ScreenGui.HUD</span></li>
+              <li><span class="pill pill--chg">[~]</span> <span class="mono">HUD.Background</span></li>
+              <li><span class="pill pill--eq">[=]</span> <span class="mono">HUD.List</span></li>
             </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Resources</h4>
-            <ul>
-              <li><a href="docs.html">Docs</a></li>
-              <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma Plugin</a></li>
-              <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Plugin</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Community</h4>
-            <ul>
-              <li><a href="#">Discord</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer__bar">
-          <span>© 2026 Figblox. All rights reserved.</span>
-          <div class="footer__bar-links">
-            <a href="privacy.html">Privacy</a>
-            <a href="#">Terms</a>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="main.js"></script>
-  </body>
+    <section class="section pricing-section io-fade" id="pricing" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading" class="section__title">Simple, transparent pricing</h2>
+      <p class="section__sub muted">One plugin. No surprises.</p>
+      <div class="pricing">
+        <article class="pricing-card card">
+          <p class="pricing-card__tier muted">Free</p>
+          <p class="pricing-card__price">$0</p>
+          <p class="pricing-card__desc muted">For trying it out</p>
+          <a class="btn btn--secondary btn--block btn--pill" href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Install Free</a>
+          <hr class="pricing-card__rule">
+          <ul class="pricing-card__features">
+            <li>Figma plugin access</li>
+            <li>Roblox plugin access</li>
+            <li>Limited exports per day</li>
+            <li>Community support</li>
+          </ul>
+        </article>
+        <article class="pricing-card card pricing-card--highlight">
+          <p class="pricing-card__tier muted">Pro</p>
+          <p class="pricing-card__price">$49 <span class="pricing-card__suffix">one-time</span></p>
+          <p class="pricing-card__desc muted">For serious Roblox developers</p>
+          <a class="btn btn--primary btn--block btn--pill" href="#get">Get Figblox</a>
+          <hr class="pricing-card__rule">
+          <ul class="pricing-card__features">
+            <li>Unlimited exports</li>
+            <li>Smart merge</li>
+            <li>All prefixes and tools</li>
+            <li>Priority support</li>
+            <li>Free updates</li>
+          </ul>
+        </article>
+        <article class="pricing-card card pricing-card--dim">
+          <p class="pricing-card__tier muted">Team</p>
+          <p class="pricing-card__price pricing-card__price--soon">Coming Soon</p>
+          <p class="pricing-card__desc muted">For studios</p>
+          <a class="btn btn--secondary btn--block btn--pill btn--dimmed" href="#get">Join Waitlist</a>
+          <hr class="pricing-card__rule">
+          <ul class="pricing-card__features">
+            <li>Everything in Pro</li>
+            <li>Multi-seat license</li>
+            <li>Dedicated support</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section changelog-section io-fade" id="changelog">
+      <h2 class="section__title">Changelog</h2>
+      <p class="section__sub muted">Recent releases</p>
+      <div class="changelog card">
+        <div class="changelog__item">
+          <span class="changelog__ver">v1.0</span>
+          <p class="changelog__notes muted">Initial release — Figma export, Studio import with preview, Smart Merge, prefixes, and responsive helpers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq io-fade" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="section__title">Everything you need to know</h2>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+            Do I have to use prefixes on every layer?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <p class="muted">No. If there's no prefix, Figblox creates a Frame by default.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+            What happens if I delete something in Figma?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <p class="muted">It stays in Roblox unless you enable "Remove deleted layers on import."</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+            Can I edit the UI in Studio after importing?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <p class="muted">Yes. Figblox updates what changed in Figma and leaves your other Studio edits alone.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+            Why are my images not showing up?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <p class="muted">Raster and image layers need matching Roblox decal assets to link. If the asset name matches, Figblox links it automatically.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+            Do I still need to run To Scale or Lock Text manually?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden>
+            <p class="muted">No. Confirming an import handles those automatically.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
+            Can I use Figblox for multiple games?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a6" role="region" aria-labelledby="faq-q6" hidden>
+            <p class="muted">Yes. Each ScreenGui is managed separately.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-item__q" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
+            What if something imports wrong?
+            <span class="faq-item__chev" aria-hidden="true"></span>
+          </button>
+          <div class="faq-item__a" id="faq-a7" role="region" aria-labelledby="faq-q7" hidden>
+            <p class="muted">Add .raster to that layer in Figma and re-export it as an image.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-banner io-fade" id="get">
+      <div class="cta-banner__inner card">
+        <h2 class="cta-banner__title">Ready to stop rebuilding UI by hand?</h2>
+        <p class="cta-banner__sub muted">Go from Figma to Roblox in minutes.</p>
+        <div class="cta-banner__actions">
+          <a class="btn btn--primary btn--pill" href="#get">Get Figblox →</a>
+          <a class="btn btn--secondary btn--pill" href="docs.html">Read the Docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand-block">
+        <a class="footer__brand" href="index.html">Figblox</a>
+        <p class="footer__tag muted">Design in Figma. Build in Roblox.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3 class="footer__heading">Platform</h3>
+          <ul>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma plugin</a></li>
+            <li><a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox plugin</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Resources</h3>
+          <ul>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="#changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Community</h3>
+          <ul>
+            <li><a href="#get">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__heading">Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="#get">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© 2026 Figblox. All rights reserved.</span>
+      <span class="footer__bar-links">
+        <a href="privacy.html">Privacy</a>
+        <span class="footer__sep">·</span>
+        <a href="#get">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
 </html>
