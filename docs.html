@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentation — Figblox</title>
-  <meta name="description" content="Figblox documentation: export from Figma, import in Roblox Studio, prefixes, and workflow.">
+  <meta name="description" content="Figblox documentation: Figma export, Roblox Studio import, prefixes, pricing, and workflow.">
   <meta property="og:title" content="Documentation — Figblox">
-  <meta property="og:description" content="Learn how to export UI from Figma and build it in Roblox Studio with Figblox.">
+  <meta property="og:description" content="Design in Figma. Build in Roblox. Full docs for Figblox plugins.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add("js");</script>
 </head>
-<body>
+<body class="docs-page">
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="index.html">Figblox</a>
@@ -44,27 +44,453 @@
     </div>
   </header>
 
-  <main>
-    <section class="page-hero section io-fade">
-      <h1>Documentation</h1>
-      <p class="muted">Export from Figma. Import in Roblox Studio.</p>
+  <main class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar__card">
+        <div class="docs-sidebar__head">
+          <p class="docs-sidebar__title">Docs</p>
+          <p class="docs-sidebar__desc muted">Figma export, Studio import, prefixes, and workflow.</p>
+        </div>
+        <nav class="docs-nav" id="docs-nav" aria-label="Documentation sections">
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Get started</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link is-active" href="#pricing">Pricing</a></li>
+              <li><a class="docs-nav__link" href="#overview">Overview</a></li>
+              <li><a class="docs-nav__link" href="#getting-started">Getting Started</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Workflow</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="#prefixes">Prefixes</a></li>
+              <li><a class="docs-nav__link" href="#auto-layout">Auto Layout</a></li>
+              <li><a class="docs-nav__link" href="#images">Images</a></li>
+              <li><a class="docs-nav__link" href="#make-raster">Make Raster</a></li>
+              <li><a class="docs-nav__link" href="#import-process">Import Process</a></li>
+              <li><a class="docs-nav__link" href="#tools">Tools</a></li>
+              <li><a class="docs-nav__link" href="#components">Components</a></li>
+              <li><a class="docs-nav__link" href="#workflow">Workflow</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__group">
+            <p class="docs-nav__label">Help</p>
+            <ul class="docs-nav__list">
+              <li><a class="docs-nav__link" href="#history">History</a></li>
+              <li><a class="docs-nav__link" href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <section class="docs-main">
+      <div class="docs-article-card">
+        <header class="docs-article-head">
+          <p class="docs-eyebrow">Figblox Docs</p>
+          <h1 class="docs-h1">Documentation</h1>
+          <p class="docs-lead muted">Design in Figma. Build in Roblox.</p>
+        </header>
+
+        <article class="docs-markdown">
+          <section id="pricing" class="docs-section">
+            <h2>Pricing</h2>
+            <p class="docs-subhead muted">Choose the license that fits your workflow</p>
+            <div class="docs-pricing-grid">
+              <div class="docs-price-card">
+                <p class="docs-price-label">Monthly</p>
+                <p class="docs-price-amount">$12.99 <span class="muted">/ month</span></p>
+              </div>
+              <div class="docs-price-card">
+                <p class="docs-price-label">Yearly</p>
+                <p class="docs-price-amount">$99 <span class="muted">/ year</span></p>
+              </div>
+              <div class="docs-price-card">
+                <p class="docs-price-label">Lifetime</p>
+                <p class="docs-price-amount">$149 <span class="muted">one-time</span></p>
+              </div>
+            </div>
+            <p class="docs-cta-row">
+              <a class="btn btn--primary btn--pill" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Get Figblox</a>
+            </p>
+            <p class="muted">Available on Polar.</p>
+            <p class="muted">Contact for Robux payment or custom licensing.</p>
+          </section>
+
+          <section id="overview" class="docs-section">
+            <h2>What makes Figblox different</h2>
+            <p class="muted">Built for editing, not just importing</p>
+            <p>A lot of Figma-to-Roblox workflows focus on getting UI into Studio once. Figblox is built around what happens after that. When you update your design in Figma and export again, Figblox can merge those changes instead of rebuilding everything from scratch.</p>
+            <p>That means Figblox is not just an importer. It is a workflow for keeping Figma and Roblox Studio in sync while you keep working.</p>
+
+            <h3>What Figblox focuses on</h3>
+            <ul>
+              <li>Smart re-importing so changed layout values can update without wiping untouched Studio edits.</li>
+              <li>Tools for scaling and device layout, including To Scale, Lock Text, and Lock Stroke.</li>
+              <li>Layout translation from Figma auto layout into Roblox layout objects like UIListLayout, UIGridLayout, and UIPadding.</li>
+              <li>Component tools for turning imported UI into buttons, text boxes, scroll views, and toggles.</li>
+              <li>Image export and linking for .raster layers and image fills.</li>
+              <li>Preview and inspection tools so you can review imports and check hierarchy before or after changes.</li>
+            </ul>
+
+            <h3>In practice</h3>
+            <ul class="docs-steps">
+              <li>Design in Figma.</li>
+              <li>Import into Roblox Studio.</li>
+              <li>Keep editing.</li>
+              <li>Re-import without starting over.</li>
+            </ul>
+
+            <p class="docs-brand-line"><strong>Figblox</strong><br><span class="muted">Design in Figma. Build in Roblox.</span></p>
+
+            <p>Figblox is a two-plugin system for moving UI from Figma into Roblox Studio without rebuilding it by hand. One plugin runs in Figma and exports your design as JSON and image assets. The other runs in Roblox Studio and imports that data into StarterGui.</p>
+            <p>When you update your design and export again, Figblox merges the new changes instead of replacing everything. Layout changes from Figma can update in Studio while edits you made in Roblox can stay intact.</p>
+          </section>
+
+          <section id="getting-started" class="docs-section">
+            <h2>Getting Started</h2>
+
+            <h3>Install both plugins</h3>
+            <p>Install the Figblox plugin from the Figma Community.<br>Install the Figblox plugin from the Roblox Creator Store in Studio.</p>
+            <p class="docs-btn-row">
+              <a class="btn btn--secondary btn--pill" href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma Plugin</a>
+              <a class="btn btn--secondary btn--pill" href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Studio Plugin</a>
+            </p>
+            <p>For best results, use one clean root frame in Figma that matches a Roblox device emulator size, such as 1920 × 1080.</p>
+
+            <h3>Basic flow</h3>
+            <ol class="docs-ol">
+              <li>Design your UI in Figma.</li>
+              <li>Export it with Figblox.</li>
+              <li>Paste the JSON into the Roblox plugin.</li>
+              <li>Click Import to open Preview.</li>
+              <li>Review the changes, then click Confirm.</li>
+            </ol>
+          </section>
+
+          <section id="prefixes" class="docs-section">
+            <h2>Prefixes</h2>
+            <p>Prefixes tell Figblox what to create. Put them at the start of the layer name.</p>
+            <p>Use this format:<br><code class="docs-code">.prefix Layer Name</code></p>
+            <p>The text after the last prefix becomes the layer name in Roblox.<br>Example: <code class="docs-code">.textbutton Shop</code> creates a TextButton named Shop.</p>
+
+            <h3>No prefix needed</h3>
+            <p>Some Figma layers already export to the right Roblox type on their own.</p>
+            <ul>
+              <li>Text exports as a TextLabel</li>
+              <li>Frames, groups, components, instances, and plain rectangles export as a Frame</li>
+              <li>Vectors, shapes, and image-filled frames or rectangles export as an ImageLabel</li>
+              <li>Anything else exports as a Frame by default</li>
+            </ul>
+            <p>Corners, strokes, gradients, auto layout, padding, and similar Figma properties can also create Roblox UI objects automatically, like UICorner, UIStroke, UIGradient, UIListLayout, UIPadding, and UIAspectRatioConstraint.</p>
+
+            <h3>Object prefixes</h3>
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <tbody>
+                  <tr><td><code>.frame</code></td><td>Creates a Frame</td></tr>
+                  <tr><td><code>.textlabel</code></td><td>Creates a TextLabel</td></tr>
+                  <tr><td><code>.textbutton</code></td><td>Creates a TextButton</td></tr>
+                  <tr><td><code>.textbox</code></td><td>Creates a TextBox</td></tr>
+                  <tr><td><code>.imagelabel</code></td><td>Creates an ImageLabel</td></tr>
+                  <tr><td><code>.imagebutton</code></td><td>Creates an ImageButton</td></tr>
+                  <tr><td><code>.imageframe</code></td><td>Creates an ImageLabel</td></tr>
+                  <tr><td><code>.scrollingframe</code> or <code>.scrollv</code></td><td>Creates a vertical ScrollingFrame</td></tr>
+                  <tr><td><code>.scrollingframex</code> or <code>.scrollh</code></td><td>Creates a horizontal ScrollingFrame</td></tr>
+                  <tr><td><code>.scrollviewport</code></td><td>Explicit scroll viewport tag</td></tr>
+                  <tr><td><code>.viewportframe</code></td><td>Creates a ViewportFrame</td></tr>
+                  <tr><td><code>.canvas</code> or <code>.canvasgroup</code></td><td>Creates a CanvasGroup</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Other prefixes</h3>
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <tbody>
+                  <tr><td><code>.gray</code> or <code>.grayscale</code></td><td>Exports a grayscale PNG</td></tr>
+                  <tr><td><code>.hover</code></td><td>Marks the layer as Hover</td></tr>
+                  <tr><td><code>.clicked</code> or <code>.pressed</code></td><td>Marks the layer as Pressed</td></tr>
+                  <tr><td><code>.toggled</code></td><td>Marks the layer as Toggled</td></tr>
+                  <tr><td><code>.disabled</code></td><td>Marks the layer as Disabled</td></tr>
+                  <tr><td><code>.scrollclip</code> or <code>.scrollviewport</code></td><td>Marks a frame as the clipping child inside a scroll container</td></tr>
+                  <tr><td><code>.raster</code></td><td>Renders the layer to a PNG</td></tr>
+                  <tr><td><code>.parent</code></td><td>Makes the tagged child become the Roblox parent for its group</td></tr>
+                  <tr><td><code>.ignore</code></td><td>Skips the layer during export</td></tr>
+                  <tr><td><code>.lock</code></td><td>Applies lock behavior and can be combined with other prefixes</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3>Combining prefixes</h3>
+            <ul>
+              <li>You can use more than one prefix on the same layer.</li>
+              <li>Figblox reads them from left to right.</li>
+              <li>If you use more than one object prefix, the last one is used.</li>
+              <li>If you use more than one state prefix, the last one is used.</li>
+              <li>For scrolling frames, <code class="docs-code">.scrollh</code> or <code class="docs-code">.scrollingframex</code> sets horizontal scrolling, and <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollingframe</code> sets vertical scrolling. If both appear, the later one is used.</li>
+            </ul>
+
+            <h3>Parent override</h3>
+            <p>Use <code class="docs-code">.parent</code> on the direct child that should become the Roblox parent.</p>
+            <p>For example:<br><code class="docs-code">.parent .imagebutton Background</code></p>
+            <p>If that child is inside a group named Promote, Figblox makes it the parent and puts the other children inside it instead of creating an extra Frame.</p>
+
+            <h3>Examples</h3>
+            <pre class="docs-pre"><code>.textlabel Health Bar
+.imagebutton Play Button
+.scrollingframe Leaderboard
+.gray .imagelabel Title
+.pressed .imagelabel OK
+.gray .scrollh .raster Card</code></pre>
+          </section>
+
+          <section id="auto-layout" class="docs-section">
+            <h2>Auto Layout</h2>
+            <p>Figblox can turn Figma auto layout and scroll settings into Roblox layout and scrolling objects automatically.</p>
+
+            <h3>Scroll containers</h3>
+            <p>To make a scroll container, use a frame with overflow set to Vertical, Horizontal, or Both in Figma. Figblox will detect it automatically.</p>
+            <p>You can also use <code class="docs-code">.scrollingframe</code> if you want to mark the frame yourself.</p>
+            <p>The scroll frame should have a fixed size, not Hug. Clip content should be turned on, and the content inside should be larger than the frame so there is something to scroll.</p>
+            <p>Content can go directly inside the scroll frame. You do not need a separate viewport wrapper.</p>
+
+            <h4>Example</h4>
+            <pre class="docs-pre"><code>SlotScroll → overflow in Prototype
+     Content
+          Slot 1
+          Slot 2
+          Slot 3</code></pre>
+
+            <h3>Auto layout</h3>
+            <p>When a frame uses auto layout in Figma, Figblox creates a Roblox layout object automatically.</p>
+            <ul>
+              <li>Vertical auto layout creates a UIListLayout.</li>
+              <li>Horizontal auto layout creates a UIListLayout.</li>
+              <li>Auto layout with wrap creates a UIGridLayout.</li>
+            </ul>
+            <p>Figblox can also create UIPadding when padding is used in Figma.</p>
+            <p>Spacing, alignment, padding, and layout direction are carried over from Figma.</p>
+            <p>Children inside auto layout frames are positioned by the Roblox layout object instead of keeping manual positions. Children set to absolute positioning in Figma keep their own positions.</p>
+          </section>
+
+          <section id="images" class="docs-section">
+            <h2>Images</h2>
+            <p>Figblox exports images in two ways:</p>
+            <ol>
+              <li>Layers with <code class="docs-code">.raster</code> in the name export as PNG files</li>
+              <li>Image fills in Figma are included automatically</li>
+            </ol>
+            <p>All images are bundled into a ZIP file when you export.</p>
+            <p>If images or .raster layers share the same name in Figma, Figblox exports them once and reuses that asset anywhere that name appears.</p>
+
+            <h3>Importing images into Roblox</h3>
+            <p>For raster and image layers, Roblox still needs real uploaded image or decal assets available to link.</p>
+            <p>The cleanest flow is to keep those uploaded assets available in the expected Loaded folder and naming structure so Figblox can match them by imageName.</p>
+            <p>If a matching image asset is available, Figblox links it automatically during import. If not, the UI still imports, but that image slot will stay unlinked until the asset is available.</p>
+
+            <h3>Re-importing images</h3>
+            <p>If you make changes to a layer marked with .raster, re-export the updated JSON and images from Figma.</p>
+            <p>If the matching Roblox image asset is already available with the correct name, Figblox can link it automatically on the next import. If not, upload or insert the new asset, then run Link Images so Figblox can match and replace the old one.</p>
+          </section>
+
+          <section id="make-raster" class="docs-section">
+            <h2>Make Raster / Clear Raster</h2>
+            <p>Figblox exports most layers as native Roblox UI objects by default. Frames, text, and simple solid-color shapes do not need to be rasterized.</p>
+            <p>Some layers work better as PNG images instead. Use raster for image fills, gradients, blur, glow, vector shapes, or layered visual effects that Roblox cannot recreate cleanly.</p>
+
+            <h3>Make Raster</h3>
+            <p>Select a layer and click Make Raster. Figblox adds the .raster prefix and looks for matching layers on the page so they can be tagged too.</p>
+
+            <h3>Clear Raster</h3>
+            <p>Select a tagged layer and click Clear Raster. Figblox removes the .raster prefix and clears matching tagged layers too. If you select a frame or group, Figblox can also clear tagged layers inside it.</p>
+
+            <h3>How matching works</h3>
+            <p>Figblox looks at the layer name, aspect ratio, and fill type to find layers that are likely to be the same element.</p>
+            <p>It also handles a few cases automatically. Generic Figma names like Rectangle or Frame are not matched page-wide. Rotated layers are not auto-matched. Read-only layers inside component instances are skipped.</p>
+
+            <h3>Status messages</h3>
+            <p>After each action, Figblox shows a short message such as:</p>
+            <ul>
+              <li>marked 6</li>
+              <li>marked 3, 2 already tagged</li>
+              <li>cleared 6</li>
+              <li>already marked</li>
+              <li>generic name, marked selected only</li>
+              <li>rotated, marked selected only</li>
+              <li>no raster layers found inside</li>
+            </ul>
+
+            <h3>When to use raster</h3>
+            <p>Use raster for image fills, gradients, blur, glow, vector shapes, boolean operations, or stacked visual effects.</p>
+            <p>You usually do not need raster for solid-color rectangles, layout frames, or text layers.</p>
+          </section>
+
+          <section id="import-process" class="docs-section">
+            <h2>Import Process</h2>
+
+            <h3>Preview first</h3>
+            <ol>
+              <li>Copy the JSON from the Figma plugin.</li>
+              <li>Open the Roblox plugin.</li>
+              <li>Paste the JSON.</li>
+              <li>Click Import.</li>
+            </ol>
+            <p>The first click opens Preview. Preview is the source of truth before anything is created or updated.</p>
+            <ul>
+              <li><strong>[+]</strong> New layer</li>
+              <li><strong>[~]</strong> Changed in Figma</li>
+              <li><strong>[=]</strong> Already in sync</li>
+            </ul>
+            <p>Review the tree, then click Confirm.</p>
+
+            <h3>What Confirm does</h3>
+            <p>When you confirm an import, Figblox now handles the normal tool chain automatically.</p>
+            <ul>
+              <li>It imports or merges the JSON.</li>
+              <li>It links images when matching assets are available.</li>
+              <li>It applies aspect handling.</li>
+              <li>It applies To Scale.</li>
+              <li>It applies Lock Text.</li>
+              <li>It applies Lock Stroke.</li>
+            </ul>
+
+            <h3>Re-importing</h3>
+            <p>After making changes in Figma, export again, paste the new JSON into the Roblox plugin, click Import to open Preview, then click Confirm.</p>
+            <ul>
+              <li>If everything shows [=], nothing meaningful changed.</li>
+              <li>If there are [~] rows, Confirm updates those matching layers.</li>
+              <li>If there are [+] rows, Confirm creates the new layers.</li>
+            </ul>
+
+            <h3>Remove deleted layers</h3>
+            <p>If you want Roblox layers removed when they no longer exist in Figma, enable Remove deleted layers on import before confirming.</p>
+          </section>
+
+          <section id="tools" class="docs-section">
+            <h2>Tools</h2>
+            <dl class="docs-dl">
+              <dt>To Scale</dt>
+              <dd>Converts position and size values from pixels to percentages so the UI works better across screen sizes.</dd>
+              <dt>Lock Text</dt>
+              <dd>Keeps text from resizing with the UI.</dd>
+              <dt>Lock Stroke</dt>
+              <dd>Keeps UIStroke thickness from scaling with the UI.</dd>
+              <dt>Link Images</dt>
+              <dd>Renames imported Decals and links them to the correct image objects.</dd>
+              <dt>Reset Tools</dt>
+              <dd>Removes Figblox tool state so you can recover, clean up, or rerun tools manually if needed.</dd>
+              <dt>Inspector</dt>
+              <dd>Shows a read-only tree of everything in StarterGui.</dd>
+            </dl>
+
+            <h3>Normal workflow</h3>
+            <p>You do not need to run To Scale, Lock Text, or Lock Stroke manually after every import or re-import anymore. Confirming an import handles that automatically.</p>
+            <p>Use Reset Tools only when you intentionally want to remove tool state, rerun tools manually, or clean up a bad imported state.</p>
+          </section>
+
+          <section id="components" class="docs-section">
+            <h2>Components</h2>
+            <dl class="docs-dl">
+              <dt>Make Button</dt>
+              <dd>Turns a Frame or ImageLabel into a clickable button and keeps the children.</dd>
+              <dt>Make TextBox</dt>
+              <dd>Turns a TextLabel into an editable text field.</dd>
+              <dt>Make ScrollView</dt>
+              <dd>Turns a Frame into a ScrollingFrame and keeps the children as scrollable content.</dd>
+              <dt>Make Toggle</dt>
+              <dd>Turns a Frame into a toggle if it has two child frames named On and Off. Figblox adds a script that swaps between those states when clicked.</dd>
+            </dl>
+          </section>
+
+          <section id="workflow" class="docs-section">
+            <h2>Workflow</h2>
+
+            <h3>1. Design in Figma</h3>
+            <p>Use one clean root frame, ideally a Roblox device emulator size like 1920 × 1080. Keep major UI areas as Frames. Use Groups only when you actually want the contents bundled or rasterized.</p>
+            <p>Use prefixes intentionally.</p>
+            <ul>
+              <li><code class="docs-code">.raster</code> for anything Roblox cannot reproduce well, such as masks, heavy shadows, blur, complex gradients, or layered effects.</li>
+              <li><code class="docs-code">.parent</code> when one visual layer should become the parent container for the other layers inside that group.</li>
+              <li><code class="docs-code">.imagebutton</code>, <code class="docs-code">.textbutton</code>, <code class="docs-code">.textbox</code>, <code class="docs-code">.scrollingframe</code>, and similar prefixes when you want a specific Roblox class.</li>
+            </ul>
+
+            <h3>2. Export from Figblox</h3>
+            <p>Click Export. If the compatibility panel appears, only rasterize the things that need rasterizing. Groups should usually be rasterized when the whole visual chunk should become one image. Text you want editable should stay outside the raster group.</p>
+            <p>Export the JSON and images. For best results, keep the root frame close to the Roblox viewport target.</p>
+
+            <h3>3. Import in Studio</h3>
+            <p>Paste the JSON and click Import. This opens Preview.</p>
+            <p>Read the preview.</p>
+            <ul>
+              <li>[+] means Figblox will create something new.</li>
+              <li>[~] means Figblox will update something.</li>
+              <li>[=] means it is already in sync.</li>
+            </ul>
+            <p>Then click Confirm.</p>
+            <p>On import, Figblox now automatically imports or merges the JSON, links images when matching assets are available, applies aspect handling, applies To Scale, applies Lock Text, and applies Lock Stroke.</p>
+            <p>The normal workflow is now:</p>
+            <p><strong>Export from Figma → Preview in Studio → Confirm Import</strong></p>
+
+            <h3>4. Image assets</h3>
+            <p>For raster and image layers, Roblox still needs real uploaded image or decal assets available to link. The cleanest flow is to keep those assets available in the expected Loaded folder and naming structure so Figblox can match by imageName.</p>
+            <p>If the image exists and the name matches, linking should be automatic. If not, the UI still imports, but that image slot will need the asset available before it can link.</p>
+
+            <h3>5. Re-import workflow</h3>
+            <p>When you change the Figma design, export the updated JSON and images, paste the new JSON into Figblox, click Import to open Preview, then confirm the changes you want to apply.</p>
+            <ul>
+              <li>If everything is [=], nothing meaningful changed.</li>
+              <li>If there are [~] rows, Confirm updates only those matching layers.</li>
+              <li>If there are [+] rows, Confirm creates the new layers.</li>
+            </ul>
+            <p>You do not need to run To Scale, Lock Text, or Lock Stroke manually after every re-import anymore.</p>
+
+            <h3>6. When to use Reset Tools</h3>
+            <p>Reset Tools is now more of a recovery or cleanup button, not part of the normal workflow.</p>
+            <p>Use it only when you intentionally want to remove Figblox tool state, need to rerun tools manually, or something got into a bad imported state.</p>
+            <p>Do not use Reset Tools as a normal step between re-imports.</p>
+            <p>The ideal loop is simple:</p>
+            <p><strong>Figma changes → Export → Studio Preview → Confirm → Done</strong></p>
+          </section>
+
+          <section id="history" class="docs-section">
+            <h2>History</h2>
+            <p>Every action you take in the plugin is recorded. Use the undo and redo arrows in the plugin to step backward or forward through your changes.</p>
+          </section>
+
+          <section id="faq" class="docs-section">
+            <h2>FAQ</h2>
+            <div class="docs-faq-block">
+              <h3 class="docs-faq-q">Do I have to use prefixes on every layer?</h3>
+              <p>No. If there is no prefix, Figblox creates a Frame by default.</p>
+
+              <h3 class="docs-faq-q">What happens if I delete something in Figma?</h3>
+              <p>It stays in Roblox unless you enable Remove deleted layers on import.</p>
+
+              <h3 class="docs-faq-q">Can I edit the UI in Studio after importing?</h3>
+              <p>Yes. Figblox updates what changed in Figma and can leave other Studio edits alone.</p>
+
+              <h3 class="docs-faq-q">Why are my images not showing up?</h3>
+              <p>Raster and image layers need matching Roblox image or decal assets available to link. If the asset exists and the name matches, Figblox can link it automatically during import.</p>
+
+              <h3 class="docs-faq-q">Do I still need to run To Scale, Lock Text, or Lock Stroke manually?</h3>
+              <p>No. Confirming an import now handles those automatically as part of the normal workflow.</p>
+
+              <h3 class="docs-faq-q">When should I use Reset Tools?</h3>
+              <p>Only when you want to remove Figblox tool state, rerun tools manually, or clean up a bad imported state.</p>
+
+              <h3 class="docs-faq-q">Can I use Figblox for multiple games?</h3>
+              <p>Yes. Each ScreenGui is managed separately.</p>
+
+              <h3 class="docs-faq-q">What if something imports wrong?</h3>
+              <p>Add .raster to that layer in Figma and export it as an image instead.</p>
+            </div>
+          </section>
+
+          <p class="docs-back"><a href="index.html">← Back to home</a></p>
+        </article>
+      </div>
     </section>
-
-    <article class="prose io-fade">
-      <h2>Getting started</h2>
-      <p>Install the <a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer">Figma community plugin</a> and the <a href="https://create.roblox.com/store" target="_blank" rel="noopener noreferrer">Roblox Studio plugin</a>. Open your UI frame in Figma, run Export, then paste or load the bundle in Studio to preview changes before confirming.</p>
-
-      <h2>Prefixes</h2>
-      <p>Use layer name prefixes to control Roblox classes (for example <span class="mono">.textbutton</span> for a TextButton). If you omit a prefix, Figblox creates a Frame by default.</p>
-
-      <h2>Smart Merge</h2>
-      <p>After you edit the design in Figma, export again. New and changed layers update in Studio; other Studio-only edits on unchanged layers are preserved.</p>
-
-      <h2>Images</h2>
-      <p>Raster and image fills export as assets. Match asset names in Roblox so Figblox can link decals automatically.</p>
-
-      <p><a href="index.html">← Back to home</a></p>
-    </article>
   </main>
 
   <footer class="footer">

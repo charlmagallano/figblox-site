@@ -105,4 +105,40 @@
       el.classList.add("is-visible");
     });
   }
+
+  /** Docs sidebar: highlight nav link for section in view */
+  var docsNav = document.getElementById("docs-nav");
+  if (docsNav && "IntersectionObserver" in window) {
+    var docSections = document.querySelectorAll(".docs-section[id]");
+    var docLinks = docsNav.querySelectorAll("a.docs-nav__link");
+    function setDocActive(id) {
+      docLinks.forEach(function (a) {
+        var href = a.getAttribute("href");
+        if (href === "#" + id) {
+          a.classList.add("is-active");
+          a.setAttribute("aria-current", "location");
+        } else {
+          a.classList.remove("is-active");
+          a.removeAttribute("aria-current");
+        }
+      });
+    }
+    var ioDocs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.target.id) {
+            setDocActive(entry.target.id);
+          }
+        });
+      },
+      { root: null, rootMargin: "-10% 0px -50% 0px", threshold: [0, 0.1] }
+    );
+    docSections.forEach(function (sec) {
+      ioDocs.observe(sec);
+    });
+    var dh = window.location.hash.replace(/^#/, "");
+    if (dh && document.getElementById(dh)) {
+      setDocActive(dh);
+    }
+  }
 })();
