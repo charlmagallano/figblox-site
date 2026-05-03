@@ -361,11 +361,6 @@ button.btn:disabled {
   margin-bottom: 1.25rem;
 }
 
-.hero__trust {
-  font-size: 0.875rem;
-  margin: 0 0 2rem;
-}
-
 /* Badges & chips */
 .badge {
   display: inline-flex;
@@ -444,7 +439,7 @@ button.btn:disabled {
 .hero-video-wrap {
   width: 100%;
   max-width: min(1120px, 100%);
-  margin: 0 auto;
+  margin: 2rem auto 0;
   padding: 0 0 1rem;
 }
 
