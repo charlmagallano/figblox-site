@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools - Figblox Docs</title>
-  <meta name="description" content="To Scale, Lock Text, Lock Stroke, Link Images, Inspector, Reset Tools.">
+  <meta name="description" content="Screen Insets, To Scale, Lock Text, Lock Stroke, Link Images, Inspector, Reset Tools.">
   <meta property="og:title" content="Tools - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -89,7 +89,7 @@
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
           <h1 class="docs-h1">Tools</h1>
-          <p class="docs-lead muted">Scaling, locking, images, and inspection utilities.</p>
+          <p class="docs-lead muted">Screen insets, scaling, locking, images, and inspection utilities.</p>
         </header>
 
         <article class="docs-markdown">
@@ -107,6 +107,24 @@
                           <dd>Removes Figblox tool state so you can recover, clean up, or rerun tools manually if needed.</dd>
                           <dt>Inspector</dt>
                           <dd>Shows a read-only tree of everything in StarterGui.</dd>
+                          <dt>Screen Insets</dt>
+                          <dd>Chooses how Figblox applies Roblox <code class="docs-code">ScreenInsets</code> on imported <code class="docs-code">ScreenGui</code> roots. Details in <a href="#screen-insets">Screen Insets</a> below.</dd>
+                        </dl>
+
+                        <h3 id="screen-insets">Screen Insets</h3>
+                        <p>The Screen Insets section sets which safe-area mode Figblox uses when wiring UI into Studio. It mirrors Roblox’s <a href="https://create.roblox.com/docs/reference/engine/enums/ScreenInsets" target="_blank" rel="noopener noreferrer">ScreenInsets</a> enum on <code class="docs-code">ScreenGui.ScreenInsets</code>.</p>
+                        <figure class="docs-figure">
+                          <img src="images/Inset-Regions-All.png" alt="Figblox Screen Insets tool with buttons for None, Device Safe, Core UI, and Topbar Safe" width="1680" height="806" loading="lazy" decoding="async" />
+                        </figure>
+                        <dl class="docs-dl">
+                          <dt>None</dt>
+                          <dd>Maps to <code class="docs-code">Enum.ScreenInsets.None</code>. Full-bleed relative to the screen—no extra insets. Best for non-interactive backgrounds; content can sit under device cutouts or core UI.</dd>
+                          <dt>Device Safe</dt>
+                          <dd>Maps to <code class="docs-code">Enum.ScreenInsets.DeviceSafeInsets</code>. Avoids device cutouts (notches, rounded corners). Does not account for Roblox core chrome such as top-bar buttons.</dd>
+                          <dt>Core UI</dt>
+                          <dd>Maps to <code class="docs-code">Enum.ScreenInsets.CoreUISafeInsets</code>. Insets for device cutouts <em>and</em> core UI, so interactive HUD stays unobstructed.</dd>
+                          <dt>Topbar Safe</dt>
+                          <dd>Maps to <code class="docs-code">Enum.ScreenInsets.TopbarSafeInsets</code>. Uses the dynamic top-bar safe region (outside core UI insets). Useful for overlays anchored next to experience controls. See also Roblox <a href="https://create.roblox.com/docs/reference/engine/classes/GuiService.md" target="_blank" rel="noopener noreferrer">GuiService.TopbarInset</a>.</dd>
                         </dl>
 
                         <h3>Normal workflow</h3>

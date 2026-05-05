@@ -1638,6 +1638,18 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   margin: 0 0 1rem;
 }
 
+.docs-markdown .docs-figure {
+  margin: 1rem 0 1.5rem;
+}
+
+.docs-markdown .docs-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+}
+
 .docs-markdown ul,
 .docs-markdown ol {
   margin: 0 0 1rem;
