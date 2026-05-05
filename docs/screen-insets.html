@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Images - Figblox Docs</title>
-  <meta name="description" content="Raster layers, image fills, ZIP export, and linking in Studio.">
-  <meta property="og:title" content="Images - Figblox Docs">
+  <title>Screen Insets - Figblox Docs</title>
+  <meta name="description" content="Choose ScreenGui.ScreenInsets for device safe areas and Roblox core UI.">
+  <meta property="og:title" content="Screen Insets - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../style.css">
   <script>document.documentElement.classList.add("js");</script>
 </head>
-<body class="docs-page" data-doc-page="images">
+<body class="docs-page" data-doc-page="screen-insets">
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="../index.html"><img class="nav__logo" src="../F.svg" alt="" width="32" height="40" decoding="async" role="presentation" /><span class="nav__wordmark">Figblox</span></a>
@@ -89,28 +89,26 @@
       <div class="docs-article-card">
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
-          <h1 class="docs-h1">Images</h1>
-          <p class="docs-lead muted">PNG export, image fills, and Studio linking.</p>
+          <h1 class="docs-h1">Screen Insets</h1>
+          <p class="docs-lead muted">Safe areas, device cutouts, and Roblox core UI.</p>
         </header>
 
         <article class="docs-markdown">
-          <div class="docs-section" id="images">
-            <p>Figblox exports images in two ways:</p>
-                        <ol>
-                          <li>Layers with <code class="docs-code">.raster</code> in the name export as PNG files</li>
-                          <li>Image fills in Figma are included automatically</li>
-                        </ol>
-                        <p>All images are bundled into a ZIP file when you export.</p>
-                        <p>If images or .raster layers share the same name in Figma, Figblox exports them once and reuses that asset anywhere that name appears.</p>
-
-                        <h3>Importing images into Roblox</h3>
-                        <p>For raster and image layers, Roblox still needs real uploaded image or decal assets available to link.</p>
-                        <p>The cleanest flow is to keep those uploaded assets available in the expected Loaded folder and naming structure so Figblox can match them by imageName.</p>
-                        <p>If a matching image asset is available, Figblox links it automatically during import. If not, the UI still imports, but that image slot will stay unlinked until the asset is available.</p>
-
-                        <h3>Re-importing images</h3>
-                        <p>If you make changes to a layer marked with .raster, re-export the updated JSON and images from Figma.</p>
-                        <p>If the matching Roblox image asset is already available with the correct name, Figblox can link it automatically on the next import. If not, upload or insert the new asset, then run Link Images so Figblox can match and replace the old one.</p>
+          <div class="docs-section" id="screen-insets">
+            <p>The Screen Insets section in the Figblox Studio plugin sets which safe-area mode Figblox uses when wiring UI into Studio. It mirrors Roblox’s <a href="https://create.roblox.com/docs/reference/engine/enums/ScreenInsets" target="_blank" rel="noopener noreferrer">ScreenInsets</a> enum on <code class="docs-code">ScreenGui.ScreenInsets</code>.</p>
+            <figure class="docs-figure">
+              <img src="images/Inset-Regions-All.png" alt="Figblox Screen Insets tool with buttons for None, Device Safe, Core UI, and Topbar Safe" width="1680" height="806" loading="lazy" decoding="async" />
+            </figure>
+            <dl class="docs-dl">
+              <dt>None</dt>
+              <dd>Maps to <code class="docs-code">Enum.ScreenInsets.None</code>. Full-bleed relative to the screen—no extra insets. Best for non-interactive backgrounds; content can sit under device cutouts or core UI.</dd>
+              <dt>Device Safe</dt>
+              <dd>Maps to <code class="docs-code">Enum.ScreenInsets.DeviceSafeInsets</code>. Avoids device cutouts (notches, rounded corners). Does not account for Roblox core chrome such as top-bar buttons.</dd>
+              <dt>Core UI</dt>
+              <dd>Maps to <code class="docs-code">Enum.ScreenInsets.CoreUISafeInsets</code>. Insets for device cutouts <em>and</em> core UI, so interactive HUD stays unobstructed.</dd>
+              <dt>Topbar Safe</dt>
+              <dd>Maps to <code class="docs-code">Enum.ScreenInsets.TopbarSafeInsets</code>. Uses the dynamic top-bar safe region (outside core UI insets). Useful for overlays anchored next to experience controls. See also Roblox <a href="https://create.roblox.com/docs/reference/engine/classes/GuiService.md" target="_blank" rel="noopener noreferrer">GuiService.TopbarInset</a>.</dd>
+            </dl>
           </div>
           <p class="docs-back"><a href="../index.html">← Back to home</a></p>
         </article>
