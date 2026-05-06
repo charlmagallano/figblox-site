@@ -120,8 +120,8 @@
                               <tr><td><code>.imagelabel</code></td><td>Creates an ImageLabel</td></tr>
                               <tr><td><code>.imagebutton</code></td><td>Creates an ImageButton</td></tr>
                               <tr><td><code>.imageframe</code></td><td>Creates an ImageLabel</td></tr>
-                              <tr><td><code>.scrollingframe</code> or <code>.scrollv</code></td><td>Creates a vertical ScrollingFrame</td></tr>
-                              <tr><td><code>.scrollingframex</code> or <code>.scrollh</code></td><td>Creates a horizontal ScrollingFrame</td></tr>
+                              <tr><td><code>.scrollv</code></td><td>Creates a vertical ScrollingFrame</td></tr>
+                              <tr><td><code>.scrollh</code></td><td>Creates a horizontal ScrollingFrame</td></tr>
                               <tr><td><code>.canvas</code> or <code>.canvasgroup</code></td><td>Creates a CanvasGroup</td></tr>
                             </tbody>
                           </table>
@@ -148,7 +148,7 @@
                         <ul>
                           <li>You can use more than one prefix on the same layer.</li>
                           <li>Prefix order in the layer name does not change how Figblox applies them. Combining prefixes works the same no matter how they are arranged.</li>
-                          <li>For scrolling frames, <code class="docs-code">.scrollh</code> or <code class="docs-code">.scrollingframex</code> sets horizontal scrolling, and <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollingframe</code> sets vertical scrolling. These mix with your other prefixes in any order; when both horizontal and vertical scrolling markers are present, the result does not depend on which appears first.</li>
+                          <li>For scrolling frames, <code class="docs-code">.scrollh</code> sets horizontal scrolling and <code class="docs-code">.scrollv</code> sets vertical scrolling. These mix with your other prefixes in any order; when both appear, the result does not depend on which appears first.</li>
                         </ul>
 
                         <h3>Parent override</h3>
@@ -159,7 +159,7 @@
                         <h3>Examples</h3>
                         <pre class="docs-pre"><code>.textlabel Health Bar
             .imagebutton Play Button
-            .scrollingframe Leaderboard
+            .scrollv Leaderboard
             .gray .imagelabel Title
             .pressed .imagelabel OK
             .gray .scrollh .raster Card</code></pre>
