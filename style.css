@@ -1,11 +1,11 @@
-/* Figblox - design tokens & layout */
+/* Figblox design tokens and base layout */
 :root {
   --bg: #0a0a0c;
   --surface: #111115;
   --border: rgba(255, 255, 255, 0.08);
   --text: #f0f0f5;
   --muted: #71717a;
-  /* Neutral accent: light zinc fill on dark UI */
+  /* Light zinc accent used across dark surfaces */
   --accent: #f4f4f5;
   --on-accent: #0a0a0b;
   --accent-hover: #fafafa;
@@ -18,9 +18,9 @@
   --font: "Space Grotesk", system-ui, sans-serif;
   --green-dot: #22c55e;
   --check: #22c55e;
-  /* Docs section anchors (in-page); hash scroll-to-center is handled in main.js */
+  /* Docs anchor offset token; hash centering logic lives in main.js */
   --scroll-pad: 5.75rem;
-  /* Motion — shared easings & durations */
+  /* Shared motion curves and timing */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --t-fast: 0.18s;
@@ -35,7 +35,7 @@
 }
 
 html {
-  /* Centered hash targets (main.js); avoid extra top offset fighting vertical centering */
+  /* Keep hash target alignment centered without extra top padding */
   scroll-padding-top: 0;
   scroll-behavior: auto;
 }
@@ -127,7 +127,7 @@ img {
   font-size: 0.9em;
 }
 
-/* Buttons — shared chrome for every variant */
+/* Button base styles used by all variants */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -164,7 +164,7 @@ img {
 }
 
 .btn--primary {
-  /* Darker than hover white so the fill change reads on all displays (not just a hairline ring). */
+  /* Slightly darker rest state so hover reads clearly */
   background: #c6c6cc;
   color: var(--on-accent);
   border-color: rgba(0, 0, 0, 0.1);
@@ -175,7 +175,7 @@ img {
   background: #ffffff;
   color: var(--on-accent);
   border-color: rgba(255, 255, 255, 0.55);
-  /* Depth + lift only — no 0 0 0 1px ring (that was reading as “outline only” vs fill). */
+  /* Hover uses depth and lift without an outline-style ring */
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.55),
     0 4px 12px rgba(0, 0, 0, 0.28),
@@ -267,7 +267,7 @@ button.btn:disabled {
   cursor: default;
 }
 
-/* Header / Nav */
+/* Header and navigation */
 .site-header {
   position: sticky;
   top: 0;
@@ -312,7 +312,7 @@ button.btn:disabled {
   opacity: 0.92;
 }
 
-/* Sized to wordmark em; tune height for optical balance with bold caps */
+/* Matched to the wordmark for visual balance */
 .nav__brand img,
 .nav__logo {
   display: block;
@@ -399,7 +399,7 @@ button.btn:disabled {
   transform: translateY(-4px) rotate(-45deg);
 }
 
-/* Fixed sibling of <header> so iOS/Safari paint full-viewport dim (fixed inside backdrop-filter ancestors breaks). */
+/* Overlay sits outside the header so Safari renders full-screen dim correctly */
 .nav-overlay {
   display: none;
   position: fixed;
@@ -433,7 +433,7 @@ button.btn:disabled {
   font-size: 1.125rem;
 }
 
-/* Plain links only — .btn variants keep their own colors (was overriding .btn--primary) */
+/* Link hover applies to text links only; buttons keep variant colors */
 .nav-overlay__links a:not(.btn) {
   color: var(--text);
 }
@@ -463,7 +463,7 @@ button.btn:disabled {
   }
 }
 
-/* Sections */
+/* Section scaffolding */
 .section {
   max-width: 1120px;
   margin: 0 auto;
@@ -506,7 +506,7 @@ button.btn:disabled {
   font-size: 1.0625rem;
 }
 
-/* Hero */
+/* Hero section */
 .hero__badge {
   margin: 0 auto 1.75rem;
 }
@@ -536,7 +536,7 @@ button.btn:disabled {
   margin-bottom: 1.25rem;
 }
 
-/* Badges & chips */
+/* Badges and chips */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -644,14 +644,14 @@ button.btn:disabled {
   color: var(--muted);
 }
 
-/* Cards */
+/* Card surfaces */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
 }
 
-/* Hero video — height follows intrinsic 1662×1080 aspect via width/height on <video> (no letterboxing from a mismatched box) */
+/* Hero video uses its native 1662x1080 aspect to avoid letterboxing */
 .hero-video-wrap {
   width: 100%;
   max-width: min(1120px, 100%);
@@ -744,7 +744,7 @@ button.btn:disabled {
   margin-right: auto;
 }
 
-/* Glass hover — feature & pricing cards only (not .hero-video.card) */
+/* Glass hover effect for feature and pricing cards (not hero video card) */
 .feature-card.card,
 .pricing-card.card {
   transition:
@@ -803,7 +803,7 @@ button.btn:disabled {
   }
 }
 
-/* Platform */
+/* Platform section */
 .platform__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -904,7 +904,7 @@ button.btn:disabled {
   }
 }
 
-/* Pricing */
+/* Pricing section */
 .pricing-section {
   scroll-margin-top: 6rem;
 }
@@ -1022,7 +1022,7 @@ button.btn:disabled {
   line-height: 1.55;
 }
 
-/* FAQ */
+/* FAQ section */
 .faq .section__title {
   margin-bottom: 2.5rem;
 }
@@ -1195,7 +1195,7 @@ button.btn:disabled {
   opacity: 0.6;
 }
 
-/* IO fade - only when JS runs (see main.js). Light motion avoids layout “jumps”. */
+/* Intersection fade states apply only when JS is enabled */
 html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split) {
   opacity: 0;
   transform: translateY(12px);
@@ -1209,7 +1209,7 @@ html.js .io-fade:not(.io-fade--stagger):not(.io-fade--split).is-visible {
   transform: translateY(0);
 }
 
-/* Stagger sections: wrapper stays in flow; children animate when section gets .is-visible */
+/* Staggered reveals: wrapper stays static, children animate on .is-visible */
 html.js .io-fade.io-fade--stagger {
   opacity: 1;
   transform: none;
@@ -1311,7 +1311,7 @@ html.js .pricing-section.io-fade--stagger.is-visible .pricing-card {
   transform: translateY(0);
 }
 
-/* Platform: copy from one side, banner from the other */
+/* Platform split reveal: text and visual enter from opposite sides */
 html.js .io-fade.io-fade--split {
   opacity: 1;
   transform: none;
@@ -1379,7 +1379,7 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   }
 }
 
-/* Docs / inner pages */
+/* Docs and inner pages */
 .page-hero {
   padding-top: 3rem;
   padding-bottom: 2rem;
@@ -1431,7 +1431,7 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   color: var(--link-hover);
 }
 
-/* Docs layout (sidebar + article scroll together; nav switches pages) */
+/* Docs layout: sidebar and article scroll together; nav links between pages */
 .docs-page .site-header {
   border-bottom-color: var(--border);
 }
@@ -1676,7 +1676,7 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   font-size: 1rem;
 }
 
-/* Docs pricing page: same grid/cards as homepage */
+/* Docs pricing page mirrors home pricing grid and cards */
 body[data-doc-page="pricing"] .docs-markdown {
   max-width: min(70rem, 100%);
 }

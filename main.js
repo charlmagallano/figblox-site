@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  /** Avoid restored scroll position (often lands on #pricing after a prior visit; mobile Safari is aggressive). */
+  /** Start at a clean scroll position instead of restoring a prior session. */
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
   }
@@ -56,7 +56,7 @@
     });
   }
 
-  /** FAQ accordion: one open at a time */
+  /** FAQ accordion behavior: keep one item open at a time. */
   var faqList = document.getElementById("faq-list");
   if (faqList) {
     faqList.querySelectorAll(".faq-item__q").forEach(function (btn) {
@@ -88,7 +88,7 @@
     });
   }
 
-  /** IntersectionObserver: fade in when entering view, fade out (reverse) when leaving */
+  /** Reveal sections on entry and reverse the motion when they leave view. */
   var fadeEls = document.querySelectorAll(".io-fade");
   var prefersReducedMotion =
     typeof window.matchMedia === "function" &&
@@ -120,7 +120,7 @@
     });
   }
 
-  /** Same-page hash links: scroll target (center by default; pricing uses start on desktop) */
+  /** Same-page hash scroll behavior (center by default, pricing aligns to top on desktop). */
   var prefersReducedMotionScroll =
     typeof window.matchMedia === "function" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -132,7 +132,7 @@
     );
   }
 
-  /** Pin element top edge just under sticky header (scrollIntoView is inconsistent on iOS with scroll-margin). */
+  /** Align target just below the sticky header for reliable mobile behavior. */
   function scrollBlockStartBelowHeader(el, smooth) {
     if (!el || typeof el.getBoundingClientRect !== "function") return;
     var header = document.querySelector(".site-header");
@@ -252,7 +252,7 @@
     scrollTopUnlessDeepLink();
   });
 
-  /** Hero video: muted autoplay + loop, no UI; resume if paused while page is visible */
+  /** Hero video setup: muted looping playback with auto-resume while visible. */
   var heroVideo = document.querySelector(".hero-video__media");
   if (heroVideo) {
     var heroReduceMotion =
