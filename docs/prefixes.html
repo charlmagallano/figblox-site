@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prefixes - Figblox Docs</title>
-  <meta name="description" content="Layer naming and object-type prefixes for Figblox.">
+  <meta name="description" content="Layer naming, Prefix Tags in Figma, and object-type prefixes for Figblox.">
   <meta property="og:title" content="Prefixes - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -70,7 +70,6 @@
               <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
               <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
               <li><a class="docs-nav__link" href="screen-insets.html">Screen Insets</a></li>
-              <li><a class="docs-nav__link" href="components.html">Components</a></li>
               <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
             </ul>
           </div>
@@ -90,7 +89,7 @@
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
           <h1 class="docs-h1">Prefixes</h1>
-          <p class="docs-lead muted">Tell Figblox what to create from layer names.</p>
+          <p class="docs-lead muted">Tell Figblox what to create from layer names—or use Prefix Tags in Figma.</p>
         </header>
 
         <article class="docs-markdown">
@@ -98,6 +97,16 @@
             <p>Prefixes tell Figblox what to create. Put them at the start of the layer name.</p>
                         <p>Use this format:<br><code class="docs-code">.prefix Layer Name</code></p>
                         <p>The text after the last prefix becomes the layer name in Roblox.<br>Example: <code class="docs-code">.textbutton Shop</code> creates a TextButton named Shop.</p>
+
+                        <h3 id="prefix-tags-figma">Prefix Tags (Figma)</h3>
+                        <p>The Figblox Figma plugin includes a <strong>Prefix Tags</strong> panel for editing layer names without typing prefixes by hand. Select a layer in the canvas, then use the panel to build the prefix stack and the Roblox-facing name.</p>
+                        <ul>
+                          <li><strong>Layer</strong> shows the combined prefix string and the layer title (for example <code class="docs-code">.raster Fill</code>).</li>
+                          <li><strong>Role</strong> picks object-type prefixes such as Frame, Text Label, Scroll V, Scroll H, Scroll XY, Canvas, Viewport, and related options.</li>
+                          <li><strong>States</strong> adds interaction prefixes such as Hover, Pressed, Toggled, and Disabled.</li>
+                          <li><strong>Tags</strong> adds utility prefixes such as Gray, Parent, Lock, and Ignore.</li>
+                        </ul>
+                        <p><strong>Raster</strong> in Tags toggles the <code class="docs-code">.raster</code> prefix on the current selection—the same effect as <strong>Make Raster</strong> when it applies the tag and <strong>Clear Raster</strong> when it removes it. See <a href="make-raster.html">Make Raster</a> for when rasterizing makes sense.</p>
 
                         <h3>No prefix needed</h3>
                         <p>Some Figma layers already export to the right Roblox type on their own.</p>

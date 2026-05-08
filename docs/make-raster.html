@@ -70,7 +70,6 @@
               <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
               <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
               <li><a class="docs-nav__link" href="screen-insets.html">Screen Insets</a></li>
-              <li><a class="docs-nav__link" href="components.html">Components</a></li>
               <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
             </ul>
           </div>
@@ -99,10 +98,12 @@
                         <p>Some layers work better as PNG images instead. Use raster for image fills, gradients, blur, glow, vector shapes, or layered visual effects that Roblox cannot recreate cleanly.</p>
 
                         <h3>Make Raster</h3>
-                        <p>Select a layer and click Make Raster. Figblox adds the .raster prefix and looks for matching layers on the page so they can be tagged too.</p>
+                        <p>Select a layer and click Make Raster. Figblox adds the <code class="docs-code">.raster</code> prefix and looks for matching layers on the page so they can be tagged too.</p>
+                        <p>You can also use the Figma plugin <strong>Prefix Tags</strong> panel: choose <strong>Raster</strong> under Tags to apply the same prefix without the separate Make Raster action. See <a href="prefixes.html#prefix-tags-figma">Prefixes → Prefix Tags</a>.</p>
 
                         <h3>Clear Raster</h3>
-                        <p>Select a tagged layer and click Clear Raster. Figblox removes the .raster prefix and clears matching tagged layers too. If you select a frame or group, Figblox can also clear tagged layers inside it.</p>
+                        <p>Select a tagged layer and click Clear Raster. Figblox removes the <code class="docs-code">.raster</code> prefix and clears matching tagged layers too. If you select a frame or group, Figblox can also clear tagged layers inside it.</p>
+                        <p>With Prefix Tags, turning <strong>Raster</strong> off on a tagged layer removes <code class="docs-code">.raster</code>—the same outcome as Clear Raster for that selection.</p>
 
                         <h3>How matching works</h3>
                         <p>Figblox looks at the layer name, aspect ratio, and fill type to find layers that are likely to be the same element.</p>
