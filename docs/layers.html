@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation - Figblox</title>
-  <meta name="description" content="Figblox documentation: Figma export, Roblox Studio import, prefixes, workflow, and licensing.">
-  <meta property="og:title" content="Documentation - Figblox">
-  <meta property="og:description" content="Built for editing, not just importing. Guides for Figma export and Roblox Studio import.">
+  <title>Layers - Figblox Docs</title>
+  <meta name="description" content="Use Layers in Preview to select rows, edit AnchorPoint, select text, toggle visibility, and delete items.">
+  <meta property="og:title" content="Layers - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +14,14 @@
   <link rel="stylesheet" href="../style.css">
   <script>document.documentElement.classList.add("js");</script>
 </head>
-<body class="docs-page" data-doc-page="index">
+<body class="docs-page" data-doc-page="layers">
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="../index.html"><img class="nav__logo" src="../F.svg" alt="" width="32" height="40" decoding="async" role="presentation" /><span class="nav__wordmark">Figblox</span></a>
       <ul class="nav__links nav__links--center">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#pricing">Pricing</a></li>
-        <li><a href="index.html" aria-current="page">Docs</a></li>
+        <li><a href="index.html">Docs</a></li>
       </ul>
       <div class="nav__actions">
                 <a class="btn btn--primary btn--pill" href="https://buy.polar.sh/polar_cl_Brq1VwpY0BizFaiA86C5dhcRhGUo0Yd5hHSgf1iZEqL" target="_blank" rel="noopener noreferrer">Buy Figblox</a>
@@ -90,29 +89,27 @@
       <div class="docs-article-card">
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
-          <h1 class="docs-h1">Documentation</h1>
-          <p class="docs-lead muted">Design in Figma. Build in Roblox.</p>
+          <h1 class="docs-h1">Layers</h1>
+          <p class="docs-lead muted">Select rows, adjust anchor points, and manage visibility in Preview.</p>
         </header>
 
         <article class="docs-markdown">
-          <p>Use the sidebar to open each topic: licensing, overview, getting started, prefixes, layout, images, import, tools, screen insets, layers, workflow, and FAQ.</p>
-          <ul>
-            <li><a href="pricing.html">Pricing</a> — Monthly, yearly, and lifetime licenses</li>
-            <li><a href="overview.html">Overview</a> — What makes Figblox different</li>
-            <li><a href="getting-started.html">Getting Started</a> — Install plugins and basic flow</li>
-            <li><a href="prefixes.html">Prefixes</a> — Layer naming, Prefix Tags in Figma, and object types</li>
-            <li><a href="auto-layout.html">Auto Layout</a> — Scroll containers and layout objects</li>
-            <li><a href="images.html">Images</a> — Export and linking in Studio</li>
-            <li><a href="make-raster.html">Raster</a> — When to use the .raster tag</li>
-            <li><a href="import-process.html">Import Process</a> — Preview, Layers edits, and confirm</li>
-            <li><a href="tools.html">Tools</a> — To Scale, Lock Text, Manual Assets, Settings, and more</li>
-            <li><a href="screen-insets.html">Screen Insets</a> — Device safe areas and Roblox core UI</li>
-            <li><a href="layers.html">Layers</a> — Select rows, set anchor points, hide, and delete</li>
-            <li><a href="workflow.html">Workflow</a> — End-to-end design loop</li>
-            <li><a href="history.html">History</a> — Undo and redo in the plugin</li>
-            <li><a href="faq.html">FAQ</a> — Common questions</li>
-          </ul>
+          <div class="docs-section" id="layers">
+            <p>The Layers panel shows the selected ScreenGui or frame children as editable rows during Preview.</p>
+            <ul>
+              <li>Click a layer name to select that frame or UI object.</li>
+              <li>Edit the anchor text box (<code class="docs-code">x,y</code>) to change AnchorPoint for that row.</li>
+              <li>Use Text Selection to select all text descendants for quick text passes.</li>
+              <li>Use the visibility button to hide or show the row.</li>
+              <li>Use the delete button to remove the row.</li>
+            </ul>
 
+            <h3>Default anchor point</h3>
+            <p>Use <strong>Settings</strong> in the plugin header to define the default AnchorPoint for imports. Layers rows reflect current Studio values and stay synced while you edit.</p>
+
+            <h3>Anchor editing behavior</h3>
+            <p>When you change AnchorPoint in Layers, Figblox keeps the element visually in place instead of jumping it across the screen.</p>
+          </div>
           <p class="docs-back"><a href="../index.html">← Back to home</a></p>
         </article>
       </div>

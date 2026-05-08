@@ -70,6 +70,7 @@
               <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
               <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
               <li><a class="docs-nav__link" href="screen-insets.html">Screen Insets</a></li>
+              <li><a class="docs-nav__link" href="layers.html">Layers</a></li>
               <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
             </ul>
           </div>
@@ -107,6 +108,16 @@
                           <li><strong>[~]</strong> Changed in Figma</li>
                           <li><strong>[=]</strong> Already in sync</li>
                         </ul>
+
+                        <h4>Layers</h4>
+                        <p>In Preview, the list is labeled <strong>Layers</strong> (this section used to be called Preview States).</p>
+                        <p><strong>Selection:</strong> there is no separate Select control. Click a row’s layer name to select it in the preview.</p>
+                        <p><strong>Anchor point:</strong> each row includes a text box for <code class="docs-code">x,y</code> anchor values (for example <code class="docs-code">0.5,0.5</code> for centered anchoring). Edit the box to tune how Figblox aligns that layer relative to its parent.</p>
+                        <p>Anchor fields are synced to current Studio values. Changing AnchorPoint keeps the element visually in place instead of shifting it unexpectedly.</p>
+
+                        <h4>Manual Assets</h4>
+                        <p>The old Inspector slot is now <strong>Manual Assets</strong>. It lists ImageLabel and ImageButton nodes from the selected ScreenGui so you can paste missing or externally uploaded <code class="docs-code">rbxassetid</code> values per image.</p>
+
                         <p>Review the tree, then click Confirm.</p>
 
                         <h3>What Confirm does</h3>
@@ -127,6 +138,8 @@
                           <li>If there are [~] rows, Confirm updates those matching layers.</li>
                           <li>If there are [+] rows, Confirm creates the new layers.</li>
                         </ul>
+                        <p>Reimport and merge diffing is stricter now, so clean JSON reimports should stay in sync instead of showing false updates.</p>
+                        <p>Undo and redo coverage now includes more Figblox-side and Studio-side actions, including layer edits made during Preview.</p>
 
                         <h3>Remove deleted layers</h3>
                         <p>If you want Roblox layers removed when they no longer exist in Figma, enable Remove deleted layers on import before confirming.</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools - Figblox Docs</title>
-  <meta name="description" content="To Scale, Lock Text, Lock Stroke, Link Images, Inspector, Reset Tools.">
+  <meta name="description" content="To Scale, Lock Text, Lock Stroke, Link Images, Manual Assets, Settings, and Reset Tools.">
   <meta property="og:title" content="Tools - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -70,6 +70,7 @@
               <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
               <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
               <li><a class="docs-nav__link" href="screen-insets.html">Screen Insets</a></li>
+              <li><a class="docs-nav__link" href="layers.html">Layers</a></li>
               <li><a class="docs-nav__link" href="workflow.html">Workflow</a></li>
             </ul>
           </div>
@@ -89,7 +90,7 @@
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
           <h1 class="docs-h1">Tools</h1>
-          <p class="docs-lead muted">Scaling, locking, images, and inspection utilities.</p>
+          <p class="docs-lead muted">Scaling, locking, image linking, manual assets, and setup utilities.</p>
         </header>
 
         <article class="docs-markdown">
@@ -105,12 +106,15 @@
                           <dd>Renames imported Decals and links them to the correct image objects.</dd>
                           <dt>Reset Tools</dt>
                           <dd>Removes Figblox tool state so you can recover, clean up, or rerun tools manually if needed.</dd>
-                          <dt>Inspector</dt>
-                          <dd>Shows a read-only tree of everything in StarterGui.</dd>
+                          <dt>Manual Assets</dt>
+                          <dd>Lists ImageLabel and ImageButton nodes in the selected ScreenGui so you can paste missing or externally uploaded <code class="docs-code">rbxassetid</code> values per image.</dd>
+                          <dt>Settings</dt>
+                          <dd>Opens plugin settings, including the default AnchorPoint used for newly imported UI.</dd>
                         </dl>
 
                         <h3>Normal workflow</h3>
                         <p>You do not need to run To Scale, Lock Text, or Lock Stroke manually after every import or re-import anymore. Confirming an import handles that automatically.</p>
+                        <p>Anchor defaults are set from <strong>Settings</strong>, and the Layers panel in Preview can override AnchorPoint per row before you confirm.</p>
                         <p>Use Reset Tools only when you intentionally want to remove tool state, rerun tools manually, or clean up a bad imported state.</p>
           </div>
           <p class="docs-back"><a href="../index.html">← Back to home</a></p>
