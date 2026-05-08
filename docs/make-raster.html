@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Make Raster - Figblox Docs</title>
-  <meta name="description" content="When to rasterize layers and how Make Raster and Clear Raster work.">
-  <meta property="og:title" content="Make Raster - Figblox Docs">
+  <title>Raster - Figblox Docs</title>
+  <meta name="description" content="Raster tag (.raster) in Prefix Tags and when PNG export beats vectors.">
+  <meta property="og:title" content="Raster - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
               <li><a class="docs-nav__link" href="prefixes.html">Prefixes</a></li>
               <li><a class="docs-nav__link" href="auto-layout.html">Auto Layout</a></li>
               <li><a class="docs-nav__link" href="images.html">Images</a></li>
-              <li><a class="docs-nav__link" href="make-raster.html">Make Raster</a></li>
+              <li><a class="docs-nav__link" href="make-raster.html">Raster</a></li>
               <li><a class="docs-nav__link" href="import-process.html">Import Process</a></li>
               <li><a class="docs-nav__link" href="tools.html">Tools</a></li>
               <li><a class="docs-nav__link" href="screen-insets.html">Screen Insets</a></li>
@@ -88,42 +88,43 @@
       <div class="docs-article-card">
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
-          <h1 class="docs-h1">Make Raster / Clear Raster</h1>
-          <p class="docs-lead muted">Tag layers, match names, and decide when PNG beats vectors.</p>
+          <h1 class="docs-h1">Raster</h1>
+          <p class="docs-lead muted">Mark layers for PNG export using the Raster tag and Prefix Tags in Figma.</p>
         </header>
 
         <article class="docs-markdown">
-          <div class="docs-section" id="make-raster">
+          <div class="docs-section" id="raster">
             <p>Figblox exports most layers as native Roblox UI objects by default. Frames, text, and simple solid-color shapes do not need to be rasterized.</p>
-                        <p>Some layers work better as PNG images instead. Use raster for image fills, gradients, blur, glow, vector shapes, or layered visual effects that Roblox cannot recreate cleanly.</p>
+            <p>Some layers work better as PNG images instead. Use raster for image fills, gradients, blur, glow, vector shapes, or layered visual effects that Roblox cannot recreate cleanly.</p>
 
-                        <h3>Make Raster</h3>
-                        <p>Select a layer and click Make Raster. Figblox adds the <code class="docs-code">.raster</code> prefix and looks for matching layers on the page so they can be tagged too.</p>
-                        <p>You can also use the Figma plugin <strong>Prefix Tags</strong> panel: choose <strong>Raster</strong> under Tags to apply the same prefix without the separate Make Raster action. See <a href="prefixes.html#prefix-tags-figma">Prefixes → Prefix Tags</a>.</p>
+            <h3>The raster tag</h3>
+            <p>Tagged layers export with the <code class="docs-code">.raster</code> prefix. You add and remove that prefix through the Figblox Figma plugin.</p>
 
-                        <h3>Clear Raster</h3>
-                        <p>Select a tagged layer and click Clear Raster. Figblox removes the <code class="docs-code">.raster</code> prefix and clears matching tagged layers too. If you select a frame or group, Figblox can also clear tagged layers inside it.</p>
-                        <p>With Prefix Tags, turning <strong>Raster</strong> off on a tagged layer removes <code class="docs-code">.raster</code>, the same outcome as Clear Raster for that selection.</p>
+            <h3>Adding the raster tag</h3>
+            <p>Select a layer, open <strong>Prefix Tags</strong>, and turn <strong>Raster</strong> on under Tags. Figblox adds <code class="docs-code">.raster</code> and looks for matching layers on the page so they can be tagged too. See also <a href="prefixes.html#prefix-tags-figma">Prefixes → Prefix Tags</a>.</p>
 
-                        <h3>How matching works</h3>
-                        <p>Figblox looks at the layer name, aspect ratio, and fill type to find layers that are likely to be the same element.</p>
-                        <p>It also handles a few cases automatically. Generic Figma names like Rectangle or Frame are not matched page-wide. Rotated layers are not auto-matched. Read-only layers inside component instances are skipped.</p>
+            <h3>Removing the raster tag</h3>
+            <p>Select a tagged layer, open Prefix Tags, and turn <strong>Raster</strong> off. Figblox removes <code class="docs-code">.raster</code> for the matching set the same way. If you select a frame or group, Figblox can also clear raster tags inside it.</p>
 
-                        <h3>Status messages</h3>
-                        <p>After each action, Figblox shows a short message such as:</p>
-                        <ul>
-                          <li>marked 6</li>
-                          <li>marked 3, 2 already tagged</li>
-                          <li>cleared 6</li>
-                          <li>already marked</li>
-                          <li>generic name, marked selected only</li>
-                          <li>rotated, marked selected only</li>
-                          <li>no raster layers found inside</li>
-                        </ul>
+            <h3>How matching works</h3>
+            <p>Figblox looks at the layer name, aspect ratio, and fill type to find layers that are likely to be the same element.</p>
+            <p>It also handles a few cases automatically. Generic Figma names like Rectangle or Frame are not matched page-wide. Rotated layers are not auto-matched. Read-only layers inside component instances are skipped.</p>
 
-                        <h3>When to use raster</h3>
-                        <p>Use raster for image fills, gradients, blur, glow, vector shapes, boolean operations, or stacked visual effects.</p>
-                        <p>You usually do not need raster for solid-color rectangles, layout frames, or text layers.</p>
+            <h3>Status messages</h3>
+            <p>After you turn Raster on or off, Figblox may show a short message such as:</p>
+            <ul>
+              <li>marked 6</li>
+              <li>marked 3, 2 already tagged</li>
+              <li>cleared 6</li>
+              <li>already marked</li>
+              <li>generic name, marked selected only</li>
+              <li>rotated, marked selected only</li>
+              <li>no raster layers found inside</li>
+            </ul>
+
+            <h3>When to use raster</h3>
+            <p>Use raster for image fills, gradients, blur, glow, vector shapes, boolean operations, or stacked visual effects.</p>
+            <p>You usually do not need raster for solid-color rectangles, layout frames, or text layers.</p>
           </div>
           <p class="docs-back"><a href="../index.html">← Back to home</a></p>
         </article>
