@@ -1638,6 +1638,24 @@ html.js .platform.io-fade--split.is-visible .platform__visual {
   margin: 0 0 1rem;
 }
 
+.docs-markdown .docs-callout {
+  margin: 1rem 0 1.35rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.docs-markdown .docs-callout p {
+  margin: 0 0 0.6rem;
+}
+
+.docs-markdown .docs-callout p:last-child {
+  margin-bottom: 0;
+}
+
 .docs-markdown .docs-figure {
   margin: 1rem 0 1.5rem;
 }
