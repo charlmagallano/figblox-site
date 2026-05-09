@@ -780,19 +780,12 @@ button.btn:disabled {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.16);
-    box-shadow:
-      0 16px 48px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
   }
 
   .pricing-card.card.pricing-card--highlight:hover {
     background: rgba(22, 22, 26, 0.62);
     border-color: rgba(255, 255, 255, 0.24);
-    box-shadow:
-      0 20px 56px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(255, 255, 255, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
   }
 }
 
@@ -945,7 +938,6 @@ button.btn:disabled {
 
 .pricing-card--highlight {
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .pricing-card__tier {
