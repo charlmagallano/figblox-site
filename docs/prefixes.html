@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prefixes - Figblox Docs</title>
-  <meta name="description" content="When to use Figblox layer prefixes: recipes for buttons, scroll frames, raster art, parent overrides, and states—plus the full prefix reference.">
+  <meta name="description" content="Quick guide to Figblox layer prefixes: common recipes, Prefix Tags in Figma, and the full prefix reference.">
   <meta property="og:title" content="Prefixes - Figblox Docs">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -90,134 +90,65 @@
         <header class="docs-article-head">
           <p class="docs-eyebrow">Figblox Docs</p>
           <h1 class="docs-h1">Prefixes</h1>
-          <p class="docs-lead muted">Recipes for real Figma layouts—then the full prefix list when you need it.</p>
+          <p class="docs-lead muted">Quick patterns. Full reference when you need every prefix.</p>
         </header>
 
         <article class="docs-markdown">
           <div class="docs-section" id="prefixes">
-            <p>Prefixes tell Figblox what to create. Put them at the start of the layer name.</p>
-            <p>Use this format:<br><code class="docs-code">.prefix Layer Name</code></p>
-            <p>The text after the last prefix becomes the layer name in Roblox.<br>Example: <code class="docs-code">.textbutton Shop</code> creates a TextButton named Shop.</p>
+            <p><strong>Most layers do not need prefixes.</strong> Use prefixes only when Figblox needs extra intent.</p>
+            <p>Prefixes go at the start of the layer name. Format: <code class="docs-code">.prefix Layer Name</code>. The text after the last prefix becomes the name in Roblox (<code class="docs-code">.textbutton Shop</code> → TextButton <strong>Shop</strong>).</p>
+            <p>By default, text becomes a TextLabel; frames, groups, components, instances, and plain rectangles become Frames; vectors, shapes, and image fills become ImageLabels; everything else defaults to Frame. Corners, strokes, gradients, auto layout, and padding often spawn UICorner, UIStroke, UIGradient, UIListLayout, UIPadding, and similar automatically (no prefix required).</p>
 
-            <div class="docs-callout" role="note">
-              <p><strong>Most layers do not need a prefix.</strong> If your frame, text, or image already imports as the right Roblox type, leave the name clean—prefixes are for steering behavior when the default is not enough.</p>
-            </div>
-
-            <h2 id="when-should-i-use-prefixes">When should I use prefixes?</h2>
+            <h2 id="quick-rule">Quick Rule</h2>
             <ul>
-              <li>If the layer already imports correctly, use <strong>no prefix</strong>.</li>
-              <li>If you need a specific Roblox class, use a <strong>role</strong> prefix such as <code class="docs-code">.textbutton</code>, <code class="docs-code">.imagebutton</code>, <code class="docs-code">.scrollv</code>, <code class="docs-code">.scrollh</code>, or <code class="docs-code">.canvas</code>.</li>
-              <li>If the layer should become a baked PNG, use <code class="docs-code">.raster</code>.</li>
-              <li>If a child should become the actual Roblox parent for its siblings, use <code class="docs-code">.parent</code> on that direct child.</li>
-              <li>If the layer is a state variant for import or merge workflows, use <code class="docs-code">.hover</code>, <code class="docs-code">.pressed</code>, <code class="docs-code">.toggled</code>, or <code class="docs-code">.disabled</code>.</li>
-              <li>If the layer is only a Figma helper (guides, notes, scratch geometry), use <code class="docs-code">.ignore</code>.</li>
+              <li>No prefix when the layer already maps to the right Roblox type.</li>
+              <li>Add a <strong>role</strong> prefix (<code class="docs-code">.textbutton</code>, <code class="docs-code">.imagebutton</code>, <code class="docs-code">.scrollv</code>, <code class="docs-code">.scrollh</code>, <code class="docs-code">.canvas</code>, …) to force a specific class.</li>
+              <li>Use <code class="docs-code">.raster</code> to bake to PNG, <code class="docs-code">.parent</code> so one direct child hosts siblings, state tags for variants, <code class="docs-code">.ignore</code> to skip helpers.</li>
             </ul>
 
-            <h2 id="prefix-recipes">Prefix recipes</h2>
-            <p>These patterns mirror how designers structure buttons, lists, and panels in Figma—prefixes line up with those jobs in Roblox.</p>
+            <h2 id="common-recipes">Common recipes</h2>
 
-            <h4>Button with image background and text</h4>
-            <p>Recommended structure:</p>
+            <h4>Button with image background</h4>
             <pre class="docs-pre"><code>.imagebutton Close
   X
   .parent .raster Background</code></pre>
-            <p>The wrapper sets the final object to an ImageButton. <code class="docs-code">.parent</code> makes <strong>Background</strong> the real Roblox parent/host. <code class="docs-code">.raster</code> bakes the visual background into one PNG. <strong>X</strong> stays as a child inside the button.</p>
-            <div class="docs-callout" role="note">
-              <p><strong>Image button backgrounds.</strong> Pair <code class="docs-code">.parent</code> with <code class="docs-code">.raster</code> on the background layer when the artwork should bake to an image and that layer should host the rest of the hierarchy.</p>
-            </div>
-            <p>Avoid:</p>
+            <p>The root is an ImageButton. <code class="docs-code">.parent .raster</code> on <strong>Background</strong> bakes the artwork and makes that layer the real parent; <strong>X</strong> stays inside the button. Only one direct child should use <code class="docs-code">.parent</code>. Do not tag multiple siblings.</p>
             <pre class="docs-pre"><code>.imagebutton Close
   .parent X
-  .parent Background</code></pre>
-            <p>Only <strong>one</strong> direct child in a group should use <code class="docs-code">.parent</code>. More than one competing parent tag is ambiguous.</p>
+  .parent Background   ← avoid</code></pre>
 
-            <h4>Simple text button</h4>
-            <pre class="docs-pre"><code>.textbutton Play</code></pre>
-            <p>Use this when the button can be native Roblox text without a custom image background.</p>
-
-            <h4>Inventory / slot scroll list</h4>
+            <h4>Scroll list or grid</h4>
             <pre class="docs-pre"><code>.scrollv SlotScroll
-  Slots
-    Slot 1
-    Slot 2</code></pre>
-            <p>Use <code class="docs-code">.scrollv</code> for vertical scrolling and <code class="docs-code">.scrollh</code> for horizontal scrolling. For both axes on the same frame, add <strong>both</strong> <code class="docs-code">.scrollh</code> and <code class="docs-code">.scrollv</code>—order does not matter—or set Figma overflow to <strong>Both</strong> and let Figblox detect it (see <a href="auto-layout.html">Auto Layout</a>). Auto layout inside the scroll content can become list or grid behavior.</p>
-
-            <h4>Grid / wrapped slots</h4>
-            <pre class="docs-pre"><code>.scrollv InventoryScroll
   Slots
     Slot 1
     Slot 2
     Slot 3</code></pre>
-            <p>Use Figma auto layout with horizontal flow and wrap for grids. Figblox imports that layout into Roblox UI layout objects.</p>
+            <p>Use <code class="docs-code">.scrollv</code> or <code class="docs-code">.scrollh</code> on the scroll frame; put both on one layer for two-axis scrolling, or use Figma overflow <strong>Both</strong> (see <a href="auto-layout.html">Auto Layout</a>). For a grid, use auto layout with horizontal wrap on the content row; Figblox turns that into list/grid-style layout in Roblox.</p>
 
-            <h4>Complex art or effects</h4>
+            <h4>Raster complex art</h4>
             <pre class="docs-pre"><code>.raster Card Art</code></pre>
-            <p>Use <code class="docs-code">.raster</code> when the layer has gradients, masks, blur, overlapping shapes, or effects that should stay visually faithful as a single PNG.</p>
-
-            <h4>Parent override for cards or buttons</h4>
-            <pre class="docs-pre"><code>.frame Card
-  Title
-  .parent Background</code></pre>
-            <p><code class="docs-code">.parent</code> on a <strong>direct child</strong> makes that child become the Roblox parent; siblings are placed inside it. Use this when the visual background should be the real container.</p>
-            <div class="docs-callout" role="note">
-              <p><strong>One parent tag per group.</strong> Only one direct child under a frame or group should use <code class="docs-code">.parent</code>.</p>
-            </div>
+            <p>Use when gradients, masks, blur, or stacked effects should ship as one PNG instead of many separate objects.</p>
 
             <h4>State variants</h4>
             <pre class="docs-pre"><code>.imagebutton Buy
 .pressed Buy
 .hover Buy
 .disabled Buy</code></pre>
-            <p>These layers are separate frames or components in Figma that share the same Roblox-facing name. State prefixes mark which variant is hover, pressed, disabled, and so on for import and matching workflows.</p>
+            <p>Separate layers or components share the same Roblox-facing name; each state prefix marks which variant it is for import and matching.</p>
 
             <h4>Ignore helper layers</h4>
             <pre class="docs-pre"><code>.ignore Guides</code></pre>
-            <p>Use <code class="docs-code">.ignore</code> for guides, measurement lines, notes, or anything that should not export to Studio.</p>
-
-            <h2 id="no-prefix-needed">No prefix needed</h2>
-            <p>Some Figma layers already export to the right Roblox type on their own.</p>
-            <ul>
-              <li>Text exports as a TextLabel</li>
-              <li>Frames, groups, components, instances, and plain rectangles export as a Frame</li>
-              <li>Vectors, shapes, and image-filled frames or rectangles export as an ImageLabel</li>
-              <li>Anything else exports as a Frame by default</li>
-            </ul>
-            <p>Corners, strokes, gradients, auto layout, padding, and similar Figma properties can also create Roblox UI objects automatically, like UICorner, UIStroke, UIGradient, UIListLayout, UIPadding, and UIAspectRatioConstraint.</p>
+            <p>For guides, measurements, notes, or scratch geometry that should not export.</p>
 
             <h2 id="prefix-tags-panel">Prefix Tags panel</h2>
-            <p>The Figblox Figma plugin includes a <strong>Prefix Tags</strong> panel for editing layer names without typing prefixes by hand. Select a layer in the canvas, then use the panel to build the prefix stack and the Roblox-facing name.</p>
+            <p>In the Figblox plugin, open <strong>Prefix Tags</strong>, select a layer, and build prefixes plus the display name without typing raw strings.</p>
             <ul>
-              <li><strong>Layer</strong> shows the combined prefix string and the layer title (for example <code class="docs-code">.raster Fill</code>).</li>
-              <li><strong>Role</strong> picks object-type prefixes such as Frame, Text Label, Scroll V, Scroll H, Scroll XY, Canvas, Viewport, and related options.</li>
-              <li><strong>States</strong> adds interaction prefixes such as Hover, Pressed, Toggled, and Disabled.</li>
-              <li><strong>Tags</strong> adds utility prefixes such as Gray, Parent, Lock, and Ignore.</li>
+              <li><strong>Layer</strong>: combined prefixes and title (e.g. <code class="docs-code">.raster Fill</code>).</li>
+              <li><strong>Role</strong>: Frame, Text Label, Scroll V/H/XY, Canvas, Viewport, etc.</li>
+              <li><strong>States</strong>: Hover, Pressed, Toggled, Disabled.</li>
+              <li><strong>Tags</strong>: Gray, Parent, Lock, Ignore; <strong>Raster</strong> toggles <code class="docs-code">.raster</code>.</li>
             </ul>
-            <p><strong>Raster</strong> in Tags toggles the <code class="docs-code">.raster</code> prefix: on adds the raster tag, off removes it. See <a href="make-raster.html">Raster</a> for when rasterizing makes sense and how matching behaves.</p>
-            <p><strong>Scroll XY</strong> in Role targets two-axis scrolling—the same situation covered by putting both <code class="docs-code">.scrollh</code> and <code class="docs-code">.scrollv</code> on one layer (see <a href="#combining-prefixes">Combining prefixes</a>).</p>
-            <div class="docs-callout" role="note">
-              <p><strong>Prefer Prefix Tags in Figma</strong> when you can—it reduces typos and keeps prefix stacks consistent compared to editing raw layer names.</p>
-            </div>
-
-            <h2 id="combining-prefixes">Combining prefixes</h2>
-            <ul>
-              <li>Prefixes can be stacked on one layer.</li>
-              <li>Order usually does not matter—Figblox applies the same tags regardless of sequence.</li>
-              <li>Use only <strong>one role-style prefix</strong> per layer (for example do not combine <code class="docs-code">.textlabel</code> with <code class="docs-code">.imagebutton</code>).</li>
-              <li>Use only <strong>one state prefix</strong> per layer (<code class="docs-code">.hover</code> and <code class="docs-code">.pressed</code> on the same layer conflict).</li>
-              <li>Only <strong>one direct child</strong> in a group should use <code class="docs-code">.parent</code>.</li>
-              <li><code class="docs-code">.ignore</code> wins: the layer is skipped, so other tags on that layer do not affect export.</li>
-              <li>Do <strong>not</strong> combine <code class="docs-code">.lock</code> with <code class="docs-code">.raster</code>—they pull export behavior in different directions.</li>
-              <li>For scrolling frames, <code class="docs-code">.scrollh</code> sets horizontal scrolling and <code class="docs-code">.scrollv</code> sets vertical scrolling. When <strong>both</strong> appear on the same layer, you get two-axis scrolling; order does not matter.</li>
-            </ul>
-            <p>Good stacks:</p>
-            <pre class="docs-pre"><code>.parent .raster Background
-.raster .parent Background
-.imagebutton .raster Icon Button
-.gray .raster Disabled Icon</code></pre>
-            <p>Avoid:</p>
-            <pre class="docs-pre"><code>.textlabel .imagebutton Button    ← two roles; pick one
-.hover .pressed Button              ← two states; split into separate variant layers
-.lock .raster Art                  ← conflicting export behavior</code></pre>
+            <p>See <a href="make-raster.html">Raster</a> for bake behavior. <strong>Scroll XY</strong> in Role matches two-axis scrolling: the same idea as <code class="docs-code">.scrollh</code> and <code class="docs-code">.scrollv</code> together.</p>
 
             <h2 id="full-prefix-reference">Full prefix reference</h2>
 
@@ -225,16 +156,16 @@
             <div class="docs-table-wrap">
               <table class="docs-table">
                 <tbody>
-                  <tr><td><code>.frame</code></td><td>Force a Frame when you want the role explicit (many plain frames already become Frames without it).</td></tr>
-                  <tr><td><code>.textlabel</code></td><td>Static text blocks and labels.</td></tr>
-                  <tr><td><code>.textbutton</code></td><td>Clickable buttons using native Roblox text styling.</td></tr>
-                  <tr><td><code>.textbox</code></td><td>Text entry fields.</td></tr>
-                  <tr><td><code>.imagelabel</code></td><td>Non-interactive images and icons.</td></tr>
-                  <tr><td><code>.imagebutton</code></td><td>Use for clickable image-based buttons.</td></tr>
-                  <tr><td><code>.imageframe</code></td><td>Same end result as <code class="docs-code">.imagelabel</code>—an ImageLabel in Roblox.</td></tr>
-                  <tr><td><code>.scrollv</code></td><td>Vertical scrolling regions (ScrollingFrame).</td></tr>
-                  <tr><td><code>.scrollh</code></td><td>Horizontal scrolling regions (ScrollingFrame).</td></tr>
-                  <tr><td><code>.canvas</code> or <code class="docs-code">.canvasgroup</code></td><td>CanvasGroup for layered effects and group transparency.</td></tr>
+                  <tr><td><code>.frame</code></td><td>Frame (explicit).</td></tr>
+                  <tr><td><code>.textlabel</code></td><td>TextLabel.</td></tr>
+                  <tr><td><code>.textbutton</code></td><td>TextButton.</td></tr>
+                  <tr><td><code>.textbox</code></td><td>TextBox.</td></tr>
+                  <tr><td><code>.imagelabel</code></td><td>ImageLabel.</td></tr>
+                  <tr><td><code>.imagebutton</code></td><td>ImageButton.</td></tr>
+                  <tr><td><code>.imageframe</code></td><td>ImageLabel (alias).</td></tr>
+                  <tr><td><code>.scrollv</code></td><td>Vertical ScrollingFrame.</td></tr>
+                  <tr><td><code>.scrollh</code></td><td>Horizontal ScrollingFrame.</td></tr>
+                  <tr><td><code>.canvas</code> or <code class="docs-code">.canvasgroup</code></td><td>CanvasGroup.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -243,28 +174,27 @@
             <div class="docs-table-wrap">
               <table class="docs-table">
                 <tbody>
-                  <tr><td><code>.gray</code> or <code class="docs-code">.grayscale</code></td><td>Export image or raster output as grayscale.</td></tr>
-                  <tr><td><code>.hover</code></td><td>Marks this layer as the Hover variant for state matching.</td></tr>
-                  <tr><td><code>.clicked</code> or <code class="docs-code">.pressed</code></td><td>Marks this layer as the Pressed variant.</td></tr>
-                  <tr><td><code>.toggled</code></td><td>Marks this layer as the Toggled variant.</td></tr>
-                  <tr><td><code>.disabled</code></td><td>Marks this layer as the Disabled variant.</td></tr>
-                  <tr><td><code>.raster</code></td><td>Bake this layer or subtree into a PNG.</td></tr>
-                  <tr><td><code>.parent</code></td><td>Make this direct child become the actual Roblox parent for its siblings.</td></tr>
-                  <tr><td><code>.ignore</code></td><td>Skip this layer during export.</td></tr>
-                  <tr><td><code>.lock</code></td><td>Applies lock behavior; combine with other prefixes except <code class="docs-code">.raster</code>.</td></tr>
+                  <tr><td><code>.gray</code> or <code class="docs-code">.grayscale</code></td><td>Grayscale PNG export.</td></tr>
+                  <tr><td><code>.hover</code></td><td>Hover state variant.</td></tr>
+                  <tr><td><code>.clicked</code> or <code class="docs-code">.pressed</code></td><td>Pressed state variant.</td></tr>
+                  <tr><td><code>.toggled</code></td><td>Toggled state variant.</td></tr>
+                  <tr><td><code>.disabled</code></td><td>Disabled state variant.</td></tr>
+                  <tr><td><code>.raster</code></td><td>Bake subtree to PNG.</td></tr>
+                  <tr><td><code>.parent</code></td><td>This direct child becomes the Roblox parent for siblings.</td></tr>
+                  <tr><td><code>.ignore</code></td><td>Skip layer on export.</td></tr>
+                  <tr><td><code>.lock</code></td><td>Lock behavior (do not pair with <code class="docs-code">.raster</code>).</td></tr>
                 </tbody>
               </table>
             </div>
 
-            <h2 id="examples">Examples</h2>
-            <pre class="docs-pre"><code>.textlabel Health Bar
-.imagebutton Play Button
-.scrollv Leaderboard
-.scrollh .scrollv Map Panel
-.gray .imagelabel Title
-.pressed .imagelabel OK
-.parent .raster Background
-.gray .scrollh .raster Card</code></pre>
+            <h2 id="combining-prefixes">Combining prefixes</h2>
+            <ul>
+              <li>Prefixes can stack.</li>
+              <li>Use one role prefix per layer.</li>
+              <li>Use one state prefix per layer.</li>
+              <li>Use only one <code class="docs-code">.parent</code> child per group.</li>
+              <li>Avoid <code class="docs-code">.lock</code> <code class="docs-code">.raster</code>.</li>
+            </ul>
           </div>
           <p class="docs-back"><a href="../index.html">← Back to home</a></p>
         </article>
