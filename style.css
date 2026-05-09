@@ -973,6 +973,12 @@ button.btn:disabled {
 
 .pricing-card .btn {
   margin-bottom: 1.5rem;
+  box-shadow: none;
+}
+
+.pricing-card .btn:hover:not(:disabled),
+.pricing-card .btn:active:not(:disabled) {
+  box-shadow: none;
 }
 
 .pricing-card__rule {
